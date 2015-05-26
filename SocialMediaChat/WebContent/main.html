@@ -1,41 +1,105 @@
 <!DOCTYPE html>
 <html>
-<head>
+<head>	
 <meta charset="ISO-8859-1">
+<<<<<<< HEAD
+<link rel="stylesheet" type="text/css" href="WEB-INF/mainStyle.css">
+<link rel="stylesheet" type="text/css" href="WEB-INF/formStyles.css">
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="WEB-INF/transitionScript.js"></script>
+
+
+=======
 <link rel="stylesheet" type="text/css" href="mainStyle.css">
+>>>>>>> origin/master
 <title>MainPage</title>
 </head>
 <body>
 
-	<div id="header">
+<div class="container">
+
+
+	<div class="header">
 			
 			
 		</div>
 		
-		<div id="navi">
+		<div class="navi">
 		
-			<ul id= "navigation_bar">
+			<ul class= "navigation_bar">
  			
-				<li><a href="#home">New</a></li>
-				<li><a href="#domains">Domain 1</a></li>
-				<li><a href="#contact">Domain2 </a></li>
-				<li><a href="#link">Domain ..</a> </li>
+				<li id="changeNew">New</li>
+				<li>Politic</li>
+				<li id="changeCars">Cars </li>
+				<li>Social .. </li>
 				
 			</ul>
 			
 			
 		</div>
 
-		<div id= "content">
-			topics here;
+		<div class= "content">
+		
+				<div class="topics" id="new">
+				
+					<div class="topic">
+							<p>New stuff</p>
+					</div>
+					
+					<div class="topic">
+							<p>New stuff</p>
+					</div>
+					<div class="topic">
+							<p>New stuff</p>
+					</div>
+					<div class="topic">
+							<p>New stuff</p>
+					</div>
+			
 		</div>
 		
-		<div id="chat">
-			chat room
-		</div>
 		
-		<div id="footer">
+			<div class= "topics"  id="cars">
+		
+	
+					<div class="topic">
+							<p>Topics about cars</p>
+					</div>
+					
+					<div class="topic">
+	<p>Topics about cars</p>
+					</div>
+					<div class="topic">
+								<p>Topics about cars</p>
+					</div>
+					<div class="topic">
+								<p>Topics about cars</p>
+					</div>
+			
+			</div>
+		</div>
+		<div class="chat">
+			<h1>Live discussions</h1>
+			
+			<div  class="display">
+			
+			
+			</div>
+			
+			<form method="post" action="">
+					<p><input type="text" name="textArea" value="" placeholder="Text "></p>
+					<p class="submit"><input type="submit" name="commit" value="Send"></p>
+			</form>
+		</div>			
+			
+		
+
+		
+		<div class="footer">
 			THERE WILL BE A FOOTER HERE
 		</div>
+</div>		
 </body>
 </html>
