@@ -98,7 +98,7 @@ a:hover, a:active {
 
 .content{
 
-	 border: 1px solid;
+	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	margin: 1px;
 	width:74%;
@@ -136,8 +136,7 @@ a:hover, a:active {
 
 .chat{
 	float:right;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	
+	border-color: #c4c4c4 #d1d1d1 #d4d4d4;	
 	position:relative;
 	margin-top:1px;
 	margin-bot:1px;
@@ -168,12 +167,23 @@ a:hover, a:active {
 
 #display{
 
-margin:1px auto;
+	margin:1px auto;
+	display:block;
+	overflow-y:auto;
 	with:95%;
 	height:70%;
 	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	background: rgba(0, 0, 0, 0.2);	
+}
+#sentMsg{
+	margin:1px;
+	paddig:1 px;
+	background: white;
+	max-width:45%;
+	float:right;
+	clear:both;
+	opacity:0.5;
 }
 
 .chat input[type=text]{
