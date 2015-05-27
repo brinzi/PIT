@@ -28,7 +28,11 @@ body{
   width: 95%;
 }
 
-
+.currentUser{
+	margin: 0;
+	font-family:"Comic Sans MS", cursive, sans-serif;
+	
+}
 .header {
 	background-color:  #0ca3d2;
 	margin: auto;
@@ -125,6 +129,10 @@ a:hover, a:active {
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	
 	background: rgba(0, 0, 0, 0.2);	
+}
+
+.topic:hover {
+	background-color:#047195;
 }
 
 .chat{
