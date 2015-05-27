@@ -24,9 +24,9 @@
 
 
 	<div class="header">
+	<p class="currentUser">Welcome,</p>
 			
-			
-		</div>
+	</div>
 		
 		<div class="navi">
 		
