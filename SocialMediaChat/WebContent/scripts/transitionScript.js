@@ -8,7 +8,7 @@ $(document).ready(function(){
 	function change(x, cur){
 	
 	if(x!=cur){
-		$(cur).fadeOut("slow")
+		$(cur).fadeOut("slow");
 		$(x).fadeIn("slow");
 		return x;
 		}

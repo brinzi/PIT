@@ -11,6 +11,7 @@
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="scripts/transitionScript.js"></script>
+<script src="scripts/chatMethods.js"></script>
 
 
 
@@ -85,14 +86,14 @@
 		<div class="chat">
 			<h1>Live discussions</h1>
 			
-			<div  class="display">
+			<div  id="display">
 			
 			
 			</div>
 			
 			<form method="post" action="">
-					<p><input type="text" name="textArea" value="" placeholder="Text "></p>
-					<p class="submit"><input type="submit" name="commit" value="Send"></p>
+					<input id="userInput"  type="text"  name="textArea"  placeholder="Text ">
+					<input class="subimt" id="send" type= "button"  name="commit" value="Send">
 			</form>
 		</div>			
 			
