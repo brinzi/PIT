@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html;"  charset="ISO-8859-1"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel="stylesheet" type="text/css" href="loginStyle.css">
-<link rel="stylesheet" type="text/css" href="formStyles.css">
+<link rel="stylesheet" type="text/css" href="css/loginStyle.css">
+<link rel="stylesheet" type="text/css" href="css/formStyles.css">
 <title>Welcome</title>
 </head>
 
@@ -25,7 +26,7 @@
   
   
   <div class="logo">
-		<img src="./Images/logo.png"  >
+		<img src="./Images/logo.png" >
   </div>
   
 </div>
