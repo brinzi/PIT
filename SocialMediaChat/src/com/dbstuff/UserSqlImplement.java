@@ -79,19 +79,24 @@ public class UserSqlImplement {
 	public boolean findUser(User u) {
 
 		/*need to be made croectly*/
+		
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
 					.prepareStatement("select * from User  where email = ? AND password = ?");
 			ps.setString(1, u.getEmail() );
+			System.out.println(u.getEmail());
 			ps.setString(2, u.getPassword());
+			System.out.println(u.getPassword());;
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
+			
 				return true;
 			}
 			
 			
 		} catch (SQLException | IOException e) {
+			e.printStackTrace();
 			return false;
 		}
 		return false;
@@ -124,10 +129,8 @@ public class UserSqlImplement {
 
 	public Connection getConnection() throws SQLException,
 			FileNotFoundException, IOException {
-		Properties credentails = new Properties();
-		credentails.load(new FileInputStream("configurare.properties"));
 		
-		return DriverManager.getConnection(url, credentails);
+		return DriverManager.getConnection(url, "it15g11","7nigyw2");
 	}
 
 }
