@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html;"  charset="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 <div class="container">
   <div class="login">
     <h1>Login</h1>
-    <form method="post" action="main.html">
+    <form method="post" action="main.jsp">
       <p><input type="text" name="login" value="" placeholder="Username "></p>
       <p><input type="password" name="password" value="" placeholder="Password"></p>
       <p class="submit">
