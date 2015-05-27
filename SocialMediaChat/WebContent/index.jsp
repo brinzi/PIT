@@ -16,10 +16,11 @@
 <div class="container">
   <div class="login">
     <h1>Login</h1>
-    <form method="post" action="main.jsp">
+    <form method="GET" action="logIn">
       <p><input type="text" name="login" value="" placeholder="Username "></p>
       <p><input type="password" name="password" value="" placeholder="Password"></p>
       <p class="submit">
+      			<input type="submit" name="commit" value="Register" >
       			<input type="submit" name="commit" value="Login" ></p>
     </form>
   </div>

@@ -14,7 +14,7 @@ import java.util.Properties;
 
 import com.userdata.User;
 
-public class UserSqlImplement  {
+public class UserSqlImplement {
 
 	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
 	private Connection conn;
@@ -25,7 +25,7 @@ public class UserSqlImplement  {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO  VALUES(?,?,?,?,?,?)");
+					.prepareStatement("INSERT INTO Users VALUES(?,?)");
 			ps.setString(1, u.getEmail());
 			ps.setString(2, u.getPassword());
 			
@@ -74,28 +74,29 @@ public class UserSqlImplement  {
 
 		return false;
 	}
+*/
 
-	@Override
-	public User findById(String id) {
+	public boolean findUser(User u) {
 
-		User u = null;
+		/*need to be made croectly*/
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from \"Utilizator\"  where \"ID\"= ?");
-			ps.setString(1, id);
+					.prepareStatement("select * from User  where email = ? AND password = ?");
+			ps.setString(1, u.getEmail() );
+			ps.setString(2, u.getPassword());
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				u = new User(id, rs.getString(2), rs.getDouble(3),
-						rs.getInt(5), rs.getInt(4));
+				return true;
 			}
-
-			return u;
+			
+			
 		} catch (SQLException | IOException e) {
-			return null;
+			return false;
 		}
+		return false;
 	}
-
+/*
 	@Override
 	public HashMap<String, Object> getAll() {
 		try {
@@ -119,8 +120,8 @@ public class UserSqlImplement  {
 		}
 	}
 	
-	
-*/
+	*/
+
 	public Connection getConnection() throws SQLException,
 			FileNotFoundException, IOException {
 		Properties credentails = new Properties();

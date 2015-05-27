@@ -48,7 +48,7 @@ body {
 }
 
 .login p.submit {
-  text-align: right;
+  text-align: center;
 }
  
 
@@ -105,10 +105,6 @@ body {
   width: 278px;
 }
  
-.login input[type=submit] {
-  right:120px;
-}
-
 
 
 /*Logo div*/

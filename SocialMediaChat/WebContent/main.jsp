@@ -91,7 +91,7 @@
 			
 			</div>
 			
-			<form method="post" action="">
+			<form method="" action="">
 					<input id="userInput"  type="text"  name="textArea"  placeholder="Text ">
 					<input class="subimt" id="send" type= "button"  name="commit" value="Send">
 			</form>
