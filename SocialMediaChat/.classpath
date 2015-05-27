@@ -8,12 +8,5 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_45/lib/missioncontrol/plugins/javax.servlet_3.0.0.v201112011016.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/jdk1.8.0_45/lib/missioncontrol/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar"/>
-=======
->>>>>>> origin/master
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
