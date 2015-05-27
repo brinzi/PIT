@@ -47,11 +47,9 @@ public class LogIn extends HttpServlet {
 		User x =new User(request.getParameter("login"), request
 				.getParameter("password"));
 		System.out.println(x.getEmail()+x.getPassword());
-		if (dbActions.findUser(x) ){
-			System.out.println("asdasdasdas");
-			response.sendRedirect("main.jsp");
+		dbActions.addItem(x);
 
-		}
+		
 
 	}
 
