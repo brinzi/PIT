@@ -31,7 +31,7 @@ body{
 
 .header {
 	background-color:  #0ca3d2;
-	margin:none;
+	margin: auto;
 	height: 100px;
 	width:auto;
 }
@@ -115,11 +115,12 @@ a:hover, a:active {
 	margin:auto;
 	width: 100%;
 	display:none;
+	-moz-border-radius: 25px;
 }
 
 .topic{
 	margin:1px auto;
-	with:95%;
+	width: 95%;
 	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	
@@ -132,7 +133,7 @@ a:hover, a:active {
 	
 	position:relative;
 	margin-top:1px;
-	margin-bot:1px;
+	margin-bottom:1px;
 	width:25%;
 	height:500px;
 
@@ -150,8 +151,9 @@ a:hover, a:active {
   background: #80D2EE;
   border-bottom: 1px solid #cfcfcf;
   border-radius: 3px 3px 0 0;
+  -moz-border-radius: 25px;
   background: -webkit-linear-gradient(top, whiteffd, #80D2EE);
-  background:-moz-linear-gradient(top, whiteffd, #80D2EE);
+  background: -moz-linear-gradient(top, whiteffd, #80D2EE);
   background: -o-linear-gradient(top, whiteffd, #80D2EE);
   background: linear-gradient(to bottom, whiteffd, #80D2EE);
   -webkit-box-shadow: 0 1px whitesmoke;
@@ -161,7 +163,7 @@ a:hover, a:active {
 .display{
 
 margin:1px auto;
-	with:95%;
+	width:95%;
 	height:70%;
 	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
