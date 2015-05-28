@@ -46,9 +46,14 @@ public class LogIn extends HttpServlet {
 		response.setContentType("text/html");
 		User x =new User(request.getParameter("login"), request
 				.getParameter("password"));
-		System.out.println(x.getEmail()+x.getPassword());
-		dbActions.addItem(x);
+		
+	
+		if(dbActions.findUser(x)){
+			request.getSession().setAttribute("currentUser", x.getEmail());
 
+			response.sendRedirect("main.jsp");
+		
+		}
 		
 
 	}

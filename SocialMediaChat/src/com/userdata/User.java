@@ -2,7 +2,7 @@ package com.userdata;
 
 public class User {
 
-	private String email, password;
+	private String email, password, name ;
 	int id;
 
 	public User(String email, String password) {

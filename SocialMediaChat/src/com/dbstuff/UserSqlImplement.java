@@ -83,11 +83,9 @@ public class UserSqlImplement {
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from User  where email = ? AND password = ?");
+					.prepareStatement("select * from Users  where email = ? AND password = ?");
 			ps.setString(1, u.getEmail() );
-			System.out.println(u.getEmail());
 			ps.setString(2, u.getPassword());
-			System.out.println(u.getPassword());;
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 			
