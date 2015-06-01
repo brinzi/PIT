@@ -25,7 +25,7 @@
 
 
 	<div class="header">
-	<p class="currentUser">Welcome, <%=session.getAttribute("currentUser") %></p>
+	<p class="currentUser">Welcome, ${currentUser.email }</p>
 			
 	</div>
 		
@@ -91,8 +91,8 @@
 			
 			</div>
 			
-			<form method="post" action="">
-					<input id="userInput"  type="text"  name="textArea"  placeholder="Text ">
+			<form action="" >
+					<input id="userInput"  type="text"  name="textArea"  placeholder="Text " autocomplete="off">
 					<input class="subimt" id="send" type= "button"  name="commit" value="Send">
 			</form>
 		</div>			
