@@ -24,6 +24,8 @@ $(document).ready(function(){
 		cur=change("#new",cur);
 	});
 
-	
+	$(document).on("click","#registerButton", function(){
+		change("#register","#login");
+	});
 
 });

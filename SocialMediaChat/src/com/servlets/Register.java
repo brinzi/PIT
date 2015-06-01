@@ -3,6 +3,7 @@ package com.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,21 +12,20 @@ import com.dbstuff.UserSqlImplement;
 import com.userdata.User;
 
 /**
- * Servlet implementation class LogIn
+ * Servlet implementation class Register
  */
-public class LogIn extends HttpServlet {
+@WebServlet("/Register")
+public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	UserSqlImplement dbActions;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-
-	UserSqlImplement dbActions;
-
-	public LogIn() {
+	public Register() {
 		super();
 		dbActions = new UserSqlImplement();
-
 	}
 
 	/**
@@ -34,7 +34,7 @@ public class LogIn extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
+		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -43,15 +43,23 @@ public class LogIn extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html");
 		User user = new User(request.getParameter("email"),
-				request.getParameter("password"));
-		System.out.println(user.getEmail() + user.getPassword());
-		if (dbActions.findUser(user)) {
-			System.out.println("asdasdasdas");
-			response.sendRedirect("main.jsp");
+				request.getParameter("password"),
+				request.getParameter("username"));
+		System.out.println(request.getParameter("email")+
+				request.getParameter("password")+
+				request.getParameter("username"));
 
-		}
+		//if (dbActions.findUser(user)) {
+			
+	//		response.sendRedirect("index.jsp");
+	//	} else{
+			dbActions.addItem(user);
+			response.sendRedirect("index.jsp");
+	//	}
+			
 
 	}
 
