@@ -75,6 +75,19 @@ body {
 
 .login p.submit {
 	text-align: right;
+	margin: 50px auto;
+	width: 640px;
+}
+
+.login {
+	position: relative;
+	margin: 0 auto;
+	padding: 20px 20px 20px;
+	width: 310px;
+}
+
+.login p.submit {
+	text-align: center;
 }
 
 :-moz-placeholder {
@@ -147,4 +160,4 @@ body {
 	height: 200px;
 	width: 250px;
 	margin: 50%;
-}
+

@@ -2,6 +2,7 @@ package com.servlets;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,6 +52,19 @@ public class LogIn extends HttpServlet {
 			System.out.println("asdasdasdas");
 			response.sendRedirect("main.jsp");
 
+		User x =new User(request.getParameter("login"), request
+				.getParameter("password"), null);
+		
+	
+		if(dbActions.findUser(x)){
+			request.getSession().setAttribute("currentUser", x);
+			
+		//	RequestDispatcher rd=request.getRequestDispatcher("ChatEngine");
+			//rd.forward(request, response);
+			
+			response.sendRedirect("main.jsp");
+		
+		
 		}
 
 	}

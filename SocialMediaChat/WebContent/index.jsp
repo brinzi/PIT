@@ -57,8 +57,12 @@
 		</div>
 	</div>
 
+
+
 	<div class="logo">
 		<img src="./Images/logo.png">
+	</div>
+
 	</div>
 
 </body>
