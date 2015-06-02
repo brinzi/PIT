@@ -24,7 +24,7 @@ public class UserSqlImplement {
 			conn = getConnection();
 			PreparedStatement ps = conn
 					.prepareStatement("INSERT INTO users( name, email, password) VALUES (?, ?, ?)");
-			ps.setString(1,	u.getUsername());
+			ps.setString(1,	u.getName());
 			System.out.println("added name");
 			ps.setString(2, u.getEmail());
 			System.out.println("and email");
@@ -69,7 +69,7 @@ public class UserSqlImplement {
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from users  where email = ? AND password = ?");
+					.prepareStatement("select * from users where email = ? AND password = ?");
 			ps.setString(1, u.getEmail());
 			System.out.println(u.getEmail());
 			ps.setString(2, u.getPassword());

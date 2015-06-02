@@ -31,22 +31,21 @@ $(function (){
 		var msg=$("#userInput").val();
 
 		socket.send(msg);
+		
 	}
 	
 	$("#send").click(function(e) {
-		var msg=$("#userInput").val();
-		e.preventDefault();
 		sendText();
 		
 	});
 		
 		
 	$("#userInput").keypress(function(e){
-		var msg=$("#userInput").val();
+	
 		if(e.which == 13) {
 			e.preventDefault();
 			sendText();
-	       addText(msg);
+	     
 	    }
 	});	
 	
