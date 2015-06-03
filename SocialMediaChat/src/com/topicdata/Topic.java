@@ -1,4 +1,4 @@
-package topics;
+package com.topicdata;
 
 import java.util.ArrayList;
 

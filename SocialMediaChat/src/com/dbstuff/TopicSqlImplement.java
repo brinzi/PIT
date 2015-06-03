@@ -7,28 +7,24 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import com.userdata.User;
+import com.topicdata.Topic;
 
-public class UserSqlImplement {
+public class TopicSqlImplement {
 
 	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
 	private Connection conn;
 
-	public void addItem(Object o) {
-		User u = (User) o;
+	public void addItem(Topic topic) {
+
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO users( name, email, password) VALUES (?, ?, ?)");
-			ps.setString(1,	u.getName());
-			System.out.println("added name");
-			ps.setString(2, u.getEmail());
-			System.out.println("and email");
-			ps.setString(3, u.getPassword());
-			System.out.println("and password");
-		
-
+					.prepareStatement("INSERT INTO topics( title, content, user_id) VALUES (?, ?, ?)");
+			ps.setString(1, topic.getTitle());
+			ps.setString(2, topic.getContent());
+			ps.setInt(3, topic.getUserId());
 			ps.execute();
 			System.out.println("executed");
 
@@ -59,30 +55,28 @@ public class UserSqlImplement {
 	 * return false; }
 	 */
 
-	public boolean findUser(User u) {
+	public ArrayList<Topic> getAll() {
 
 		/* need to be made croectly */
-
+		ArrayList<Topic> topics;
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from users where email = ? AND password = ?");
-			ps.setString(1, u.getEmail());
-			System.out.println(u.getEmail());
-			ps.setString(2, u.getPassword());
-			System.out.println(u.getPassword());
-			;
+					.prepareStatement("select * from topics");
+
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				System.out.println("found = true");
-				return true;
+
+			topics = new ArrayList<Topic>();
+			while (rs.next()) {
+				topics.add(new Topic(rs.getInt(1), rs.getNString(2), rs
+						.getNString(3), rs.getInt(4)));
 			}
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
-		return false;
+		return topics;
 	}
 
 	/*

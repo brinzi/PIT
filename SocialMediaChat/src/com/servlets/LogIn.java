@@ -2,7 +2,6 @@ package com.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,27 +54,10 @@ public class LogIn extends HttpServlet {
 		if (dbActions.findUser(user)) {
 
 			System.out.println("asdasdasdas");
-
+			
 			request.getSession().setAttribute("currentUser", user);
 
-			request.getSession().setAttribute("currentUser", user);
-
-			User x = new User(request.getParameter("login"),
-					request.getParameter("password"));
-
-			if (dbActions.findUser(x)) {
-				request.getSession().setAttribute("currentUser", x.getEmail());
-
-				response.sendRedirect("main.jsp");
-
-				response.sendRedirect("main.jsp");
-
-			}
-
-			if (dbActions.findUser(new User(request.getParameter("login"),
-					request.getParameter("password"))))
-				response.sendRedirect("main.jsp");
-
+			response.sendRedirect("main.jsp");
 		}
 
 	}

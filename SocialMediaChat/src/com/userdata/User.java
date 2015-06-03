@@ -9,7 +9,6 @@ public class User {
 	
 	
 	public User(User e) {
-		super();
 		this.email = e.getEmail();
 		this.password = e.getPassword();
 		this.name = e.getName();
@@ -24,7 +23,6 @@ public class User {
 	}
 
 	public User(String email, String password) {
-		this.id = id;
 		this.email=email;
 		this.password=password;
 	}
