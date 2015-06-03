@@ -58,7 +58,7 @@ body {
 	position: relative;
 	text-align: center;
 	height: 300px;
-	width: 100%;
+	width: 10px;
 }
 
 .login, .register {
@@ -74,21 +74,12 @@ body {
 }
 
 .login p.submit {
-	text-align: right;
-	margin: 50px auto;
-	width: 640px;
-}
-
-.login {
-	position: relative;
-	margin: 0 auto;
-	padding: 20px 20px 20px;
-	width: 310px;
-}
-
-.login p.submit {
 	text-align: center;
+	margin: 10px 0 0 55%;
+	width: 200px;
 }
+
+
 
 :-moz-placeholder {
 	color: #c9c9c9 !important;
