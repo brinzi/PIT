@@ -44,16 +44,21 @@ public class LogIn extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+
 		response.setContentType("text/html");
+
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"));
-		System.out.println(user.getEmail() + user.getPassword());
-		if (dbActions.findUser(user)) {
-			System.out.println("asdasdasdas");
-			request.getSession().setAttribute("currentUser", user);
-			response.sendRedirect("main.jsp");
 
-			
+		System.out.println(user.getEmail() + user.getPassword());
+
+		if (dbActions.findUser(user)) {
+
+			System.out.println("asdasdasdas");
+
+			request.getSession().setAttribute("currentUser", user);
+
+			response.sendRedirect("main.jsp");
 
 		}
 
