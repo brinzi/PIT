@@ -45,17 +45,40 @@ public class LogIn extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"));
 		System.out.println(user.getEmail() + user.getPassword());
 		if (dbActions.findUser(user)) {
 			System.out.println("asdasdasdas");
+<<<<<<< Updated upstream
 			request.getSession().setAttribute("currentUser", user);
+=======
+
+
+		User x =new User(request.getParameter("login"), request
+				.getParameter("password"));
+		
+	
+		if(dbActions.findUser(x)){
+			request.getSession().setAttribute("currentUser", x.getEmail());
+
+
+>>>>>>> Stashed changes
 			response.sendRedirect("main.jsp");
 
 			
 
 		}
+
+
+
+			  
+		if(dbActions.findUser(new User(request.getParameter("login"), request.getParameter("password"))))
+			response.sendRedirect("main.jsp");
+
+		
+>>>>>>> Stashed changes
 
 	}
 }
