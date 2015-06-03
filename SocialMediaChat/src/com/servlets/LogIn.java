@@ -55,12 +55,39 @@ public class LogIn extends HttpServlet {
 		if (dbActions.findUser(user)) {
 
 			System.out.println("asdasdasdas");
+<<<<<<< HEAD
 
 			request.getSession().setAttribute("currentUser", user);
+=======
+<<<<<<< Updated upstream
+			request.getSession().setAttribute("currentUser", user);
+=======
+
+
+		User x =new User(request.getParameter("login"), request
+				.getParameter("password"));
+		
+	
+		if(dbActions.findUser(x)){
+			request.getSession().setAttribute("currentUser", x.getEmail());
+
+
+>>>>>>> Stashed changes
+			response.sendRedirect("main.jsp");
+>>>>>>> 0124671c295ff08b3e6908f808a5c356b0063ed4
 
 			response.sendRedirect("main.jsp");
 
 		}
+
+
+
+			  
+		if(dbActions.findUser(new User(request.getParameter("login"), request.getParameter("password"))))
+			response.sendRedirect("main.jsp");
+
+		
+>>>>>>> Stashed changes
 
 	}
 }

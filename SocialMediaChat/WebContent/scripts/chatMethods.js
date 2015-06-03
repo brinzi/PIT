@@ -3,9 +3,9 @@
  */
 
 
-$(function (){
+$(window).load(function (){
 
-	
+
 	var socket= new WebSocket("ws://localhost:8080/SocialMediaChat/socket");
 	
 	socket.onopen = function(event){

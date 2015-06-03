@@ -28,7 +28,8 @@ public class ChatWebSocket implements WebSocketListener {
 
 	@Override
 	public void onWebSocketClose(int arg0, String arg1) {
-		// TODO Auto-generated method stub
+		conn.close();
+		currentUsers.remove(this);
 
 	}
 
