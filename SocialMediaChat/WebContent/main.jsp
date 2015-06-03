@@ -8,13 +8,9 @@
 <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
 <link rel="stylesheet" type="text/css" href="css/formStyles.css">
 
-
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="scripts/transitionScript.js"></script>
 <script src="scripts/chatMethods.js"></script>
-
-
-
 
 
 <title>MainPage</title>

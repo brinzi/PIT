@@ -1,17 +1,20 @@
 /*This is the main style sheet for the web-app*/
 
+	/* Main Primary color */
 
-.color-primary-0 { color: #0CA1D2 }	/* Main Primary color */
+.color-primary-0 { color: #0CA1D2 }
 .color-primary-1 { color: #80D2EE }
 .color-primary-2 { color: #40B7DE }
 .color-primary-3 { color: #047195 }
 .color-primary-4 { color: #02465D }
 
 
-
 /* As RGBa codes */
 
-.rgba-primary-0 { color: rgba( 12,161,210,1) }	/* Main Primary color */
+	/* Main Primary color */
+
+
+.rgba-primary-0 { color: rgba( 12,161,210,1) }
 .rgba-primary-1 { color: rgba(128,210,238,1) }
 .rgba-primary-2 { color: rgba( 64,183,222,1) }
 .rgba-primary-3 { color: rgba(  4,113,149,1) }
