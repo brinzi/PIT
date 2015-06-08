@@ -21,8 +21,13 @@
 
 
 	<div class="header">
-	<p class="currentUser">Welcome, ${currentUser.email }</p>
-			
+
+	<p class="currentUser">Welcome, ${currentUser.name }</p>
+	<script>
+		var u = "${currentUser.email }";
+		
+	</script>
+	<%  %>
 	</div>
 		
 		<div class="navi">

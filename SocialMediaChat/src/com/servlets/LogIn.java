@@ -2,7 +2,6 @@ package com.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -49,22 +48,13 @@ public class LogIn extends HttpServlet {
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"));
 		System.out.println(user.getEmail() + user.getPassword());
-		if (dbActions.findUser(user)) {
+		if ((user=dbActions.findUser(user.hashCode()))!=null) {
 			System.out.println("asdasdasdas");
-<<<<<<< Updated upstream
+			System.out.println(user.getName());
+
 			request.getSession().setAttribute("currentUser", user);
-=======
-
-
-		User x =new User(request.getParameter("login"), request
-				.getParameter("password"));
-		
+			
 	
-		if(dbActions.findUser(x)){
-			request.getSession().setAttribute("currentUser", x.getEmail());
-
-
->>>>>>> Stashed changes
 			response.sendRedirect("main.jsp");
 
 			
@@ -73,12 +63,6 @@ public class LogIn extends HttpServlet {
 
 
 
-			  
-		if(dbActions.findUser(new User(request.getParameter("login"), request.getParameter("password"))))
-			response.sendRedirect("main.jsp");
-
-		
->>>>>>> Stashed changes
 
 	}
 }

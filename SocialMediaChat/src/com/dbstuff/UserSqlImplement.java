@@ -1,6 +1,5 @@
 package com.dbstuff;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,8 +7,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Properties;
 
 import com.userdata.User;
 
@@ -23,14 +20,13 @@ public class UserSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO users( name, email, password) VALUES (?, ?, ?)");
-			ps.setString(1,	u.getName());
+					.prepareStatement("INSERT INTO users(id, name, email) VALUES (?,?, ?)");
+			ps.setInt(1, u.getId());
+			ps.setString(2,	u.getName());
 			System.out.println("added name");
-			ps.setString(2, u.getEmail());
+			ps.setString(3, u.getEmail());
 			System.out.println("and email");
-			ps.setString(3, u.getPassword());
-			System.out.println("and password");
-		
+			
 
 			ps.execute();
 			System.out.println("executed");
@@ -62,30 +58,31 @@ public class UserSqlImplement {
 	 * return false; }
 	 */
 
-	public boolean findUser(User u) {
+	public User findUser(int u) {
 
 		/* need to be made croectly */
 
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from users where email = ? AND password = ?");
-			ps.setString(1, u.getEmail());
-			System.out.println(u.getEmail());
-			ps.setString(2, u.getPassword());
-			System.out.println(u.getPassword());
-			;
+					.prepareStatement("select * from users where id = ?");
+			ps.setInt(1, u);
+		
+			
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				System.out.println("found = true");
-				return true;
+				User foundUser= new User( rs.getString(2), rs.getNString(3),u);
+				System.out.println(rs.getString(2)+"  nop name here ");
+				return foundUser;
+				
 			}
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
-		return false;
+		return null;
 	}
 
 	/*

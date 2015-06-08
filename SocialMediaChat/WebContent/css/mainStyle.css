@@ -173,13 +173,16 @@ a:hover, a:active {
 	margin:1px auto;
 	display:block;
 	overflow-y:auto;
+	word-wrap:break-down;
 	with:95%;
 	height:70%;
 	border: 1px solid;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 	background: rgba(0, 0, 0, 0.2);	
+	font: 10px arial, sans-serif;
+	
 }
-#sentMsg{
+.Msg{
 	margin:1px;
 	paddig:1 px;
 	background: white;
@@ -187,7 +190,13 @@ a:hover, a:active {
 	float:right;
 	clear:both;
 	opacity:0.5;
+	overflow: hidden;
 }
+#recvMsg{
+	float:left;
+	
+}
+
 
 .chat input[type=text]{
 	margin:auto;
