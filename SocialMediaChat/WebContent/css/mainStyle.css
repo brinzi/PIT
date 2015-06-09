@@ -117,10 +117,12 @@ a:hover, a:active {
 	box-shadow: 0 1px whitesmoke;
 
 }
+.userInfo{
 
+	border: dotted;
+}
 .topics{
-	margin:auto;
-	width: 100%;
+	
 	display:none;
 }
 
