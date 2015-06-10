@@ -1,24 +1,4 @@
-/*This is the main style sheet for the web-app*/
-
-	/* Main Primary color */
-
-.color-primary-0 { color: #0CA1D2 }
-.color-primary-1 { color: #80D2EE }
-.color-primary-2 { color: #40B7DE }
-.color-primary-3 { color: #047195 }
-.color-primary-4 { color: #02465D }
-
-
-/* As RGBa codes */
-
-	/* Main Primary color */
-
-
-.rgba-primary-0 { color: rgba( 12,161,210,1) }
-.rgba-primary-1 { color: rgba(128,210,238,1) }
-.rgba-primary-2 { color: rgba( 64,183,222,1) }
-.rgba-primary-3 { color: rgba(  4,113,149,1) }
-.rgba-primary-4 { color: rgba(  2, 70, 93,1) }
+/*This is the main style sheet for the web-app that extends bootstrap stylesheet*/
 
 
 body{
@@ -139,36 +119,19 @@ a:hover, a:active {
 	background-color:#047195;
 }
 
-.chat{
+#chat{
 	float:right;
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;	
 	position:relative;
 	margin-top:1px;
 	margin-bot:1px;
-	width:25%;
-	height:500px;
-
+	display:none;
+	padding: 0px;
+}
+#chat button[type=button]{
 	
 }
 
-.chat h1{
-	margin:auto;	
-  line-height: 40px;
-  font-size: 15px;
-  font-weight: bold;
-  color: #555;
-  text-align: center;
-  text-shadow: 0 1px white;
-  background: #80D2EE;
-  border-bottom: 1px solid #cfcfcf;
-  border-radius: 3px 3px 0 0;
-  background: -webkit-linear-gradient(top, whiteffd, #80D2EE);
-  background:-moz-linear-gradient(top, whiteffd, #80D2EE);
-  background: -o-linear-gradient(top, whiteffd, #80D2EE);
-  background: linear-gradient(to bottom, whiteffd, #80D2EE);
-  -webkit-box-shadow: 0 1px whitesmoke;
-  box-shadow: 0 1px whitesmoke;
-}
 
 #display{
 
@@ -176,13 +139,17 @@ a:hover, a:active {
 	display:block;
 	overflow-y:auto;
 	word-wrap:break-down;
-	with:95%;
-	height:70%;
-	border: 1px solid;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	background: rgba(0, 0, 0, 0.2);	
-	font: 10px arial, sans-serif;
 	
+	border: 1px solid;
+	border-color: #c4c4c4 #d1d1d1 #d4d4d4;	
+	font: 10px arial, sans-serif;
+	position: relative;
+	
+}
+#display form,input{
+position: relative;
+bottom: 0;	
+
 }
 .Msg{
 	margin:1px;
@@ -200,17 +167,37 @@ a:hover, a:active {
 }
 
 
-.chat input[type=text]{
-	margin:auto;
-	width:92%;
+.panel.panel-default.friendList {
+	padding-left: 0px;
+	padding-right: 0px;
+	float: right;
+	
 	
 }
-
+.panel.panel-default.userInfo{
+	padding-left: 0px;
+	padding-right: 0px;
+	
+	
+}
+.panel.panel-default.userinfo{
+	
+}
+#friendTab{
+	margin:auto;
+	
+}
+#friendTab:HOVER{
+	background: rgba(0, 0, 0, 0.08) none repeat scroll 0% 0%;
+	cursor: default;
+}
 
 .footer {
 	border-top: 0.5px dotted brown;
 	width:100%;
 	height: 20px;
+	position:fixed;
+	bottom:0;
 	clear:both;
 }
 
