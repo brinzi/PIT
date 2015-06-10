@@ -1,6 +1,7 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -41,6 +42,7 @@ public class LogIn extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
@@ -49,12 +51,20 @@ public class LogIn extends HttpServlet {
 				request.getParameter("password"));
 		System.out.println(user.getEmail() + user.getPassword());
 		if ((user=dbActions.findUser(user.hashCode()))!=null) {
-			System.out.println("asdasdasdas");
-			System.out.println(user.getName());
-
+			System.out.println((HashMap<Integer, String>)dbActions.getFriendList(user.getId()));
+			user.setFriendList( (HashMap<Integer, String>) dbActions.getFriendList(user.getId()));
+			//user.addFriend(dbActions.findUser(205821076));
+			//System.out.println(user.getFriendList());
+			String myFriends="";
+			for (Integer id : user.getFriendList().keySet()) {
+				myFriends+=user.getFriendList().get(id);
+			}
+			
+			
+			dbActions.loadFriendList(user.getFriendList(),user.getId());
+			System.out.println((HashMap<Integer, String>)dbActions.getFriendList(user.getId()));
 			request.getSession().setAttribute("currentUser", user);
 			
-	
 			response.sendRedirect("main.jsp");
 
 			

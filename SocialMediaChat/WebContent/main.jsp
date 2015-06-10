@@ -104,15 +104,18 @@
 			</div>
 			<div class="col-md-3" id="chat">
 
-				
-				<div id="display">
+
+				<div id="display"></div>
+				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<div >
 					<form action="">
+
 						<input id="userInput" type="text" name="textArea"
 							placeholder="Text " autocomplete="off"> <input
 							class="subimt" id="send" type="button" name="commit" value="Send">
+
 					</form>
 				</div>
-
 
 			</div>
 

@@ -1,12 +1,15 @@
 package com.dbstuff;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 import com.userdata.User;
 
@@ -15,19 +18,23 @@ public class UserSqlImplement {
 	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
 	private Connection conn;
 
-	public void addItem(Object o) {
-		User u = (User) o;
+	public void addItem(User o) {
+		User u = o;
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
 					.prepareStatement("INSERT INTO users(id, name, email) VALUES (?,?, ?)");
 			ps.setInt(1, u.getId());
-			ps.setString(2,	u.getName());
-			System.out.println("added name");
+			ps.setString(2, u.getName());
 			ps.setString(3, u.getEmail());
-			System.out.println("and email");
-			
 
+			ps.execute();
+
+			ps = conn
+					.prepareStatement("INSERT INTO friendLists(listID, list) VALUES (?,?)");
+
+			ps.setInt(1, u.getId());
+			ps.setObject(2, u.getFriendList());
 			ps.execute();
 			System.out.println("executed");
 
@@ -58,6 +65,51 @@ public class UserSqlImplement {
 	 * return false; }
 	 */
 
+	/* Loads the friends list to the DB */
+	public void loadFriendList(Object list, int userID) {
+		try {
+			conn = getConnection();
+			PreparedStatement ps = conn
+					.prepareStatement("UPDATE  friendLists SET list=? WHERE listID=?");
+			ps.setObject(1, list);
+			ps.setInt(2, userID);
+			ps.execute();
+			System.out.println("Exported to DB"+(HashMap<Integer, String>)list);
+
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/* Returns the list of friends for a user */
+	public Object getFriendList(int userID) {
+
+		try {
+			conn = getConnection();
+			PreparedStatement ps = conn
+					.prepareStatement("SELECT list FROM friendLists WHERE listID=?");
+			ps.setInt(1, userID);
+
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+
+			byte[] buf = rs.getBytes(1);
+			ObjectInputStream objectIn = null;
+			if (buf != null)
+				objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
+			Object friends = objectIn.readObject();
+
+			return friends;
+
+		} catch (SQLException | IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
 	public User findUser(int u) {
 
 		/* need to be made croectly */
@@ -67,16 +119,12 @@ public class UserSqlImplement {
 			PreparedStatement ps = conn
 					.prepareStatement("select * from users where id = ?");
 			ps.setInt(1, u);
-		
-			
+
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				System.out.println("found = true");
-				User foundUser= new User( rs.getString(3), rs.getNString(2),u);
-				System.out.println(foundUser.getName() + "  nop name here ");
-				
+				User foundUser = new User(rs.getString(3), rs.getNString(2), u);
 				return foundUser;
-				
+
 			}
 
 		} catch (SQLException | IOException e) {
