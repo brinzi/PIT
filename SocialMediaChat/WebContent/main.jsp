@@ -5,13 +5,13 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<<<<<<< HEAD
+
 <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
 <link rel="stylesheet" type="text/css" href="css/formStyles.css">
 <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-=======
+
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
->>>>>>> origin/master
+
 
 
 <script

@@ -8,6 +8,8 @@ public class Comment {
 
 	private int userId;
 
+	private int topicId;
+
 	public Comment(String content, int userId) {
 		this.content = content;
 		this.userId = userId;
@@ -17,6 +19,14 @@ public class Comment {
 		this.id = id;
 		this.content = content;
 		this.userId = userId;
+	}
+
+	public int getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
 	}
 
 	public int getId() {
@@ -42,7 +52,5 @@ public class Comment {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
-	
 
 }
