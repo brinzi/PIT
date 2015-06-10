@@ -72,8 +72,9 @@ public class UserSqlImplement {
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				System.out.println("found = true");
-				User foundUser= new User( rs.getString(2), rs.getNString(3),u);
-				System.out.println(rs.getString(2)+"  nop name here ");
+				User foundUser= new User( rs.getString(3), rs.getNString(2),u);
+				System.out.println(foundUser.getName() + "  nop name here ");
+				
 				return foundUser;
 				
 			}
