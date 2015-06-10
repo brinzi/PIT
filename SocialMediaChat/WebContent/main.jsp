@@ -56,7 +56,11 @@
 
 		<div class="container-fluid ">
 
-			<div class="topics col-md-8" id="new">
+			<div class="col-md-2 panel panel-default userInfo">
+				<div class="panel-heading">User info</div>
+			</div>
+
+			<div class="topics col-md-7" id="new">
 
 				<div class="well topic">
 					<p>Topics about new</p>
@@ -79,7 +83,7 @@
 			</div>
 
 
-			<div class="col-md-8 topics" id="cars">
+			<div class="col-md-7 topics" id="cars">
 
 
 				<div class="well topic">
@@ -98,18 +102,26 @@
 
 
 			</div>
+			<div class="col-md-3" id="chat">
 
-			<div class="col-md-4 chat">
-				<h1>Live discussions</h1>
+				
+				<div id="display">
+					<form action="">
+						<input id="userInput" type="text" name="textArea"
+							placeholder="Text " autocomplete="off"> <input
+							class="subimt" id="send" type="button" name="commit" value="Send">
+					</form>
+				</div>
 
-				<div id="display"></div>
 
-				<form action="">
-					<input id="userInput" type="text" name="textArea"
-						placeholder="Text " autocomplete="off"> <input
-						class="subimt" id="send" type="button" name="commit" value="Send">
-				</form>
 			</div>
+
+			<div class="col-md-3 panel panel-default friendList">
+				<div class="panel-heading">Friends</div>
+				<div class="panel-body" id="friendTab">Panel content</div>
+
+			</div>
+
 		</div>
 
 

@@ -23,6 +23,11 @@ $(document).ready(function(){
 	$("#changeNew").click(function(){
 		cur=change("#new",cur);
 	});
+	
+	$("#friendTab").click(function(){
+		$("#chat").slideDown();
+		
+	});
 
 	$(document).on("click","#registerButton", function(){
 		change("#register","#login");
