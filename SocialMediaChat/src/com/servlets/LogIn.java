@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONObject;
+
 import com.dbstuff.UserSqlImplement;
 import com.userdata.User;
 
@@ -55,15 +57,16 @@ public class LogIn extends HttpServlet {
 			user.setFriendList( (HashMap<Integer, String>) dbActions.getFriendList(user.getId()));
 			//user.addFriend(dbActions.findUser(205821076));
 			//System.out.println(user.getFriendList());
-			String myFriends="";
-			for (Integer id : user.getFriendList().keySet()) {
-				myFriends+=user.getFriendList().get(id);
-			}
+			
+			JSONObject myMap=new JSONObject(user.getFriendList());
+		
 			
 			
-			dbActions.loadFriendList(user.getFriendList(),user.getId());
-			System.out.println((HashMap<Integer, String>)dbActions.getFriendList(user.getId()));
+			
+			//dbActions.loadFriendList(user.getFriendList(),user.getId());
+			System.out.println(myMap);
 			request.getSession().setAttribute("currentUser", user);
+			request.getSession().setAttribute("myFriends", myMap);
 			
 			response.sendRedirect("main.jsp");
 

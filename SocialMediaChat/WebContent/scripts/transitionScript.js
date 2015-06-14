@@ -24,10 +24,11 @@ $(document).ready(function(){
 		cur=change("#new",cur);
 	});
 	
-	$("#friendTab").click(function(){
+	
+	$(document).on("click","#friendTab", function(){
 		$("#chat").slideDown();
-		
 	});
+
 
 	$(document).on("click","#registerButton", function(){
 		change("#register","#login");

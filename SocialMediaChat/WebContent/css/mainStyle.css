@@ -8,86 +8,8 @@ body {
 	width: 95%;
 }
 
-.currentUser {
-	margin: 0;
-	font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-.header {
-	background-color: #0ca3d2;
-	margin: none;
-	height: 100px;
-	width: auto;
-}
-
-/*----------------------------Navigtion bar -----------------------------------------*/
-.navi {
-	width: auto;
-	background-color: #76528C;
-}
-
-ul {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-}
-
-.navigation_bar li {
-	float: left;
-	display: block;
-	width: 120px;
-	font-weight: bold;
-	color: #FFFFFF;
-	background-color: #76528C;
-	text-align: center;
-	padding: 4px;
-	text-decoration: none;
-	text-transform: uppercase;
-	cursor: default;
-}
-
-.navigation_bar li:hover {
-	background-color: #DDCBE8;
-	cursor: default;
-}
-
-/*
-a:link, a:visited {
-    display: block;
-    width: 120px;
-    font-weight: bold;
-    color: #FFFFFF;
-    background-color:#76528C;
-    text-align: center;
-    padding: 4px;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-a:hover, a:active {
-    background-color: #DDCBE8;
-}
-/*----------------------------Navigtion bar -----------------------------------------*/
-.content {
-	border: 1px solid;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	margin: 1px;
-	width: 74%;
-	height: 500px;
-	float: left;
-	position: static;
-	display: block;
-	background: -webkit-linear-gradient(bot, white, #40B7DE);
-	background: -moz-linear-gradient(top, white, #40B7DE);
-	background: -o-linear-gradient(top, white, #40B7DE);
-	background: linear-gradient(to bottom, white, #40B7DE);
-	-webkit-box-shadow: 0 1px whitesmoke;
-	box-shadow: 0 1px whitesmoke;
-}
-
-.userInfo {
-	border: dotted;
+.search{
+	margin-bottom	: 0px;
 }
 
 .topics {
@@ -96,10 +18,8 @@ a:hover, a:active {
 
 .topic {
 	margin: 1px auto;
-	with: 95%;
-	border: 1px solid;
-	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
-	background: rgba(0, 0, 0, 0.2);
+	
+
 }
 
 .topic:hover {
@@ -116,7 +36,7 @@ a:hover, a:active {
 
 #chat input[type=text] {
 	margin-right: 0px;
-	height: inherit;
+	height: 30px;
 	width: 70%;
 	margin-right: 0px;
 	border-right: none;
@@ -130,7 +50,7 @@ a:hover, a:active {
 	width: 25%;
 	border-radius: 0px;
 	left: -3px;
-	height: inherit;
+	
 	border-left: none;
 	border-radius: 0px;
 	box-sizing: border-box;
