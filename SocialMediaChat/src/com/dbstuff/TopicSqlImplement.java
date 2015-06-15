@@ -70,6 +70,7 @@ public class TopicSqlImplement {
 			while (rs.next()) {
 				topics.add(new Topic(rs.getInt(1), rs.getNString(2), rs
 						.getNString(3), rs.getInt(4)));
+				rs.next();
 			}
 
 		} catch (SQLException | IOException e) {

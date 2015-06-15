@@ -18,7 +18,7 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="scripts/transitionScript.js"></script>
+<script src="scripts/topicsManager.js"></script>
 <script src="scripts/chatMethods.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <script>
@@ -43,6 +43,7 @@
 					<li id="changeNew"><a href="#">Page 1</a></li>
 					<li id="changeCars"><a href="#">Page 2</a></li>
 					<li><a href="#">Page 3</a></li>
+					<li style="text-align: center;"><a href="#">POST</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#">${currentUser.name }, log out</a></li>
@@ -61,51 +62,21 @@
 				<div class="panel-heading">User info</div>
 			</div>
 
-			<div class="topics col-md-7" id="new">
-
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
+			<div class="col-md-7 topics" id="topicsContainer">
 
 
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-
-			</div>
-
-
-			<div class="col-md-7 topics" id="cars">
-
-
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about cars</p>
+				<div class="panel panel-default" onclick="showContent();">
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel primary</h3>
+					</div>
+					<div class="panel-body">Panel content</div>
 				</div>
 
 
 			</div>
 			<div class="col-md-3" id="chat">
 
-				
+
 				<div id="display">
 					<form action="">
 						<input id="userInput" type="text" name="textArea"
