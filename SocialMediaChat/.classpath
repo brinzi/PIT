@@ -9,6 +9,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.29-bin.jar"/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Stefan/Downloads/gson-2.3.1.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Brinzi&apos;s/Downloads/jetty-distribution-9.2.10.v20150310/jetty-distribution-9.2.10.v20150310/lib/annotations/javax.annotation-api-1.2.jar"/>
+	<classpathentry kind="lib" path="json-simple-1.1.1.jar"/>
+>>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,12 +1,15 @@
 package com.userdata;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class User {
 
 
 
 	private String email, password, name;
 	private int id;
-
+	private Map<Integer , String > friendList; 
 	
 	
 	public User(User e) {
@@ -29,6 +32,7 @@ public class User {
 		this.email = email;
 		this.name = name;
 		this.id = id;
+		this.friendList=new HashMap<Integer, String>();
 	}
 	
 	
@@ -39,18 +43,19 @@ public class User {
 	 * @param name
 	 */
 	public User(String email, String password, String name) {
-		super();
+		
 		this.email = email;
 		this.password = password;
 		this.name = name;
+		this.friendList=new HashMap<Integer, String>();
 	}
 
 
 
 	public User(String email, String password) {
-	
 		this.email=email;
 		this.password=password;
+		this.friendList=new HashMap<Integer, String>();
 	}
 	public User(int id, String email, String password, String name) {
 		this.id = id; 
@@ -92,6 +97,27 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+	public Map<Integer, String> getFriendList() {
+		return friendList;
+	}
+
+
+
+	public void setFriendList(HashMap<Integer, String> friendList) {
+		this.friendList = friendList;
+	}
+
+	
+	
+	public void addFriend(User x){
+		System.out.println("Add friend"+x.getName());
+		System.out.println(friendList);
+		friendList.put(x.getId(), x.getName());
+		
+	}
+
 
 	@Override
 	public int hashCode() {

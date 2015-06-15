@@ -6,23 +6,41 @@
 <meta charset="ISO-8859-1">
 
 
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
 <link rel="stylesheet" type="text/css" href="css/formStyles.css">
 
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/bootstrap.min.css">
+=======
+>>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
+<link rel="stylesheet" type="text/css" href="css/formStyles.css">
 
 
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<<<<<<< HEAD
 <script src="scripts/topicsManager.js"></script>
+=======
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="scripts/transitionScript.js"></script>
+>>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 <script src="scripts/chatMethods.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
 <script>
 	var u = "${currentUser.name }";
+	var myFriends = $
+	{
+		myFriends
+	};
 </script>
 
 
@@ -46,9 +64,20 @@
 					<li style="text-align: center;"><a href="#">POST</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
+
 					<li><a href="#">${currentUser.name }, log out</a></li>
 
 				</ul>
+				<form class="navbar-form navbar-right search" role="search">
+					<div class="form-group">
+						<input class="form-control" placeholder="Search" type="text">
+						<button class="btn">
+							<span class="glyphicon glyphicon-search"></span>
+						</button>
+					</div>
+
+				</form>
+
 			</div>
 		</div>
 		</nav>
@@ -74,23 +103,31 @@
 
 
 			</div>
+
 			<div class="col-md-3" id="chat">
 
 
+<<<<<<< HEAD
 				<div id="display">
+=======
+				<div id="display"></div>
+				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+				<div>
+>>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 					<form action="">
+
 						<input id="userInput" type="text" name="textArea"
 							placeholder="Text " autocomplete="off"> <input
 							class="subimt" id="send" type="button" name="commit" value="Send">
+
 					</form>
 				</div>
 
-
 			</div>
 
-			<div class="col-md-3 panel panel-default friendList">
+			<div class="col-md-3 panel panel-default friendList" id="friendList">
 				<div class="panel-heading">Friends</div>
-				<div class="panel-body" id="friendTab">Panel content</div>
+
 
 			</div>
 
