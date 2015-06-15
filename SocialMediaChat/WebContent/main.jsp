@@ -6,14 +6,12 @@
 <meta charset="ISO-8859-1">
 
 
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
 <link rel="stylesheet" type="text/css" href="css/formStyles.css">
 
 <link rel="stylesheet" type="text/css"
 	href="bootstrap/css/bootstrap.min.css">
-=======
->>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
+
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -26,21 +24,15 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<<<<<<< HEAD
 <script src="scripts/topicsManager.js"></script>
-=======
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="scripts/transitionScript.js"></script>
->>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 <script src="scripts/chatMethods.js"></script>
 
 <script>
 	var u = "${currentUser.name }";
-	var myFriends = $
-	{
-		myFriends
-	};
+	var myFriends = ${myFriends};
 </script>
 
 
@@ -107,13 +99,9 @@
 			<div class="col-md-3" id="chat">
 
 
-<<<<<<< HEAD
-				<div id="display">
-=======
 				<div id="display"></div>
 				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 				<div>
->>>>>>> b394f499392d71dbeff3cef36db29cd8626b7166
 					<form action="">
 
 						<input id="userInput" type="text" name="textArea"
