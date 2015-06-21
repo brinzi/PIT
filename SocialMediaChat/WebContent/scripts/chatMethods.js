@@ -4,31 +4,24 @@
 
 $(window).load(
 		function() {
-			
-			
-	
-			
-			
+
 			for ( var friend in myFriends) {
-					loadFriend(myFriends[friend]);
+				loadFriend(myFriends[friend]);
 			}
-			
-			
-			function loadFriend(friend){
-				$("#friendList").append($("<div class=\"panel-body\" id=\"friendTab\"></div>").text(friend));
+
+			function loadFriend(friend) {
+				$("#friendList").append(
+						$("<div class=\"panel-body\" id=\"friendTab\"></div>")
+								.text(friend));
 			}
-			
 
 			var socket = new WebSocket("ws://localhost:8080/socket");
-			
-		
+
 			socket.onopen = function(event) {
 
 				console.log('Connection open!');
 
 			};
-			
-			
 
 			socket.onmessage = function(event) {
 				console.log('event.data');
@@ -40,7 +33,8 @@ $(window).load(
 				if (isMyMsg(e)) {
 					$("#display").append($("<p class=\"Msg\" ></p>").text(e));
 				} else {
-					$("#display").append($("<p class=\"Msg\" id=\"recvMsg\"></p>").text(e));
+					$("#display").append(
+							$("<p class=\"Msg\" id=\"recvMsg\"></p>").text(e));
 				}
 				$("#userInput").val("");
 
@@ -89,7 +83,5 @@ $(window).load(
 
 				}
 			});
-			
-			
 
 		});

@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="mysql-connector-java-5.1.29-bin.jar"/>
 	<classpathentry kind="lib" path="C:/Users/Brinzi&apos;s/Downloads/jetty-distribution-9.2.10.v20150310/jetty-distribution-9.2.10.v20150310/lib/annotations/javax.annotation-api-1.2.jar"/>
 	<classpathentry kind="lib" path="json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="gson-2.3.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

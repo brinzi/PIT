@@ -1,9 +1,5 @@
 /*Transition for Domains*/
-$(document).ready(function(){
-	
 	var cur="#new";
-	
-	$(cur).show();
 	
 	function change(x, cur){
 	
@@ -15,6 +11,12 @@ $(document).ready(function(){
 		else
 			return cur;
 	};
+$(document).ready(function(){
+	
+
+	$(cur).show();
+	
+
 	
 	$("#changeCars").click(function(){
 		cur=change("#cars",cur);

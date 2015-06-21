@@ -22,13 +22,12 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="scripts/transitionScript.js"></script>
 <script src="scripts/chatMethods.js"></script>
+<script src="scripts/searchScript.js"></script>
+<script src="scripts/notificationScript.js"></script>
 
 <script>
 	var u = "${currentUser.name }";
-	var myFriends = $
-	{
-		myFriends
-	};
+	var myFriends = ${myFriends};
 </script>
 
 
@@ -57,7 +56,7 @@
 				</ul>
 				<form class="navbar-form navbar-right search" role="search">
 					<div class="form-group">
-						<input class="form-control" placeholder="Search" type="text">
+						<input class="form-control" id="search" placeholder="Find pepole" type="text">
 						<button class="btn">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
@@ -78,7 +77,10 @@
 				<div class="panel-heading">User info</div>
 			</div>
 
-			<div class="topics col-md-7" id="new">
+			<div class="col-md-7 searchResults" id="results">
+			</div>
+
+			<div class=" col-md-7 topics" id="new">
 
 				<div class="well topic">
 					<p>Topics about new</p>

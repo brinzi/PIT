@@ -48,18 +48,10 @@ public class Register extends HttpServlet {
 				request.getParameter("password"),
 				request.getParameter("username"));
 		user.setId(user.hashCode());
-		System.out.println(request.getParameter("email")+
-				request.getParameter("password")+
-				request.getParameter("username"));
 
-		//if (dbActions.findUser(user)) {
-			
-	//		response.sendRedirect("index.jsp");
-	//	} else{
-			dbActions.addItem(user);
-			response.sendRedirect("index.jsp");
-	//	}
-			
+		dbActions.addItem(user);
+		response.sendRedirect("index.jsp");
+		// }
 
 	}
 
