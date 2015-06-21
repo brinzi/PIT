@@ -1,6 +1,8 @@
 package com.userdata;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class User {
@@ -9,7 +11,8 @@ public class User {
 
 	private String email, password, name;
 	private int id;
-	private Map<Integer , String > friendList; 
+	private Map<Integer , String > friendList;
+	private List<Notification> myNotifications;
 	
 	
 	public User(User e) {
@@ -23,16 +26,17 @@ public class User {
 	
 
 	/**
-	 * @param email
-	 * @param name
 	 * @param id
+	 * @param name
+	 * @param email
 	 */
-	public User(String email, String name, int id) {
+	public User(int id, String name, String email) {
 	
 		this.email = email;
 		this.name = name;
 		this.id = id;
 		this.friendList=new HashMap<Integer, String>();
+		this.myNotifications=new ArrayList<Notification>();
 	}
 	
 	
@@ -48,6 +52,7 @@ public class User {
 		this.password = password;
 		this.name = name;
 		this.friendList=new HashMap<Integer, String>();
+		this.myNotifications=new ArrayList<Notification>();
 	}
 
 
@@ -56,13 +61,39 @@ public class User {
 		this.email=email;
 		this.password=password;
 		this.friendList=new HashMap<Integer, String>();
+		this.myNotifications=new ArrayList<Notification>();
 	}
+	
+	
 	public User(int id, String email, String password, String name) {
 		this.id = id; 
 		this.email = email;
 		this.password = password;
 		this.name=name;
 	}
+	
+	
+
+	/**
+	 * @param email
+	 * @param password
+	 * @param name
+	 * @param id
+	 * @param friendList
+	 * @param myNotifications
+	 */
+	public User(String email, String password, String name, int id,
+			Map<Integer, String> friendList, List<Notification> myNotifications) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.name = name;
+		this.id = id;
+		this.friendList = friendList;
+		this.myNotifications = myNotifications;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -112,11 +143,32 @@ public class User {
 	
 	
 	public void addFriend(User x){
-		System.out.println("Add friend"+x.getName());
-		System.out.println(friendList);
+		
 		friendList.put(x.getId(), x.getName());
 		
 	}
+	 
+	
+	public void addNotification(Notification n){
+		myNotifications.add(n);
+		
+	}
+	
+	public void removeNotification(Notification n){
+		myNotifications.remove(n);
+	}
+
+
+	public List<Notification> getMyNotifications() {
+		return myNotifications;
+	}
+
+
+
+	public void setMyNotifications(List<Notification> myNotifications) {
+		this.myNotifications = myNotifications;
+	}
+
 
 
 	@Override

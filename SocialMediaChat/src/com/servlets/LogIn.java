@@ -1,7 +1,9 @@
 package com.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
+import com.dbstuff.NotificationsSql;
 import com.dbstuff.UserSqlImplement;
+import com.google.gson.Gson;
+import com.userdata.Notification;
 import com.userdata.User;
 
 /**
@@ -44,38 +49,54 @@ public class LogIn extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"));
-		System.out.println(user.getEmail() + user.getPassword());
-		if ((user=dbActions.findUser(user.hashCode()))!=null) {
-			System.out.println((HashMap<Integer, String>)dbActions.getFriendList(user.getId()));
-			user.setFriendList( (HashMap<Integer, String>) dbActions.getFriendList(user.getId()));
-			//user.addFriend(dbActions.findUser(205821076));
-			//System.out.println(user.getFriendList());
+//		System.out.println(user.getEmail() + user.getPassword());
+		if ((user = dbActions.findUser(user.hashCode())) != null) {
 			
-			JSONObject myMap=new JSONObject(user.getFriendList());
-		
-			
+			loadNotifications(user);
+			loadUserLists(user);
+			//user.addFriend(dbActions.findUser(106323914));
+			//dbActions.loadFriendList(user.getFriendList(), user.getId());
+			//System.out.println(user.getMyNotifications().get(0));
 			
 			
-			//dbActions.loadFriendList(user.getFriendList(),user.getId());
+			JSONObject myMap = new JSONObject(user.getFriendList());
+			String  notifications= new Gson().toJson(user.getMyNotifications());
+			
+			
 			System.out.println(myMap);
 			request.getSession().setAttribute("currentUser", user);
 			request.getSession().setAttribute("myFriends", myMap);
-			
-			response.sendRedirect("main.jsp");
+			request.getSession().setAttribute("notificationList", notifications);
 
-			
+			response.sendRedirect("main.jsp");
 
 		}
 
+	}
+	
+	
+	private void loadNotifications(User user){
+		
+		user.setMyNotifications((List<Notification>) dbActions.getNotifications(user.getId()));
+		
+		
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void loadUserLists(User user){
 
-
-
+		user.setFriendList((HashMap<Integer, String>) dbActions
+				.getFriendList(user.getId()));
+		
+		user.setMyNotifications((ArrayList<Notification>) dbActions
+				.getNotifications(user.getId()));
+		
 	}
 }

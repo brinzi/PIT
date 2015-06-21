@@ -9,7 +9,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+
+import org.json.simple.JSONObject;
 
 import com.userdata.User;
 
@@ -23,19 +24,17 @@ public class UserSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO users(id, name, email) VALUES (?,?, ?)");
+					.prepareStatement("INSERT INTO users(id, name, email, friendLists,notifications) VALUES (?,?,?,?,?)");
 			ps.setInt(1, u.getId());
 			ps.setString(2, u.getName());
 			ps.setString(3, u.getEmail());
+			ps.setObject(4, u.getFriendList());
+			ps.setObject(5, u.getMyNotifications());
 
 			ps.execute();
 
-			ps = conn
-					.prepareStatement("INSERT INTO friendLists(listID, list) VALUES (?,?)");
 
-			ps.setInt(1, u.getId());
-			ps.setObject(2, u.getFriendList());
-			ps.execute();
+
 			System.out.println("executed");
 
 		} catch (SQLException | IOException e) {
@@ -43,38 +42,61 @@ public class UserSqlImplement {
 		}
 	}
 
-	/*
-	 * @Override public boolean update(Object o) { User u = (User) o; try {
-	 * Connection conn = getConnection(); PreparedStatement ps = conn
-	 * .prepareStatement(
-	 * "update \"Utilizator\"  SET \"Gold\",\"S_army\",a_army,number_of_settlements where \"ID\"=?"
-	 * ); ps.setDouble(1, u.getGoldAmount()); ps.setInt(2,
-	 * u.getStationedArmy()); ps.setInt(3, u.getAvalibleArmy()); ps.setInt(4,
-	 * u.getSettlements().size()); ps.setString(5, u.getUserID());
-	 * ps.executeUpdate();
-	 * 
-	 * return true; } catch (SQLException | IOException e) { return false; } }
-	 * 
-	 * @Override public boolean delete(Object o) { User u = (User) o;
-	 * 
-	 * try { Connection conn = getConnection(); PreparedStatement ps; ps = conn
-	 * .prepareStatement("Delete from \"Utilizator\"   where \"ID\"=?");
-	 * ps.setString(1, u.getUserID()); ps.execute(); } catch (SQLException |
-	 * IOException e) { e.printStackTrace(); }
-	 * 
-	 * return false; }
-	 */
+	/* Loads the friends list to the DB */
+	public void loadNotifications(Object list, int userID) {
+		try {
+			conn = getConnection();
+			PreparedStatement ps = conn
+					.prepareStatement("UPDATE  users SET notifications=? WHERE id=?");
+			ps.setObject(1, list);
+			ps.setInt(2, userID);
+			ps.execute();
+
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	/* Returns the list of friends for a user */
+	public Object getNotifications(int userID) {
+
+		try {
+			conn = getConnection();
+			PreparedStatement ps = conn
+					.prepareStatement("SELECT notifications FROM users WHERE id=?");
+			ps.setInt(1, userID);
+
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+
+			byte[] buf = rs.getBytes(1);
+			ObjectInputStream objectIn = null;
+			if (buf != null)
+				objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
+			Object notifications = objectIn.readObject();
+			
+			conn.close();
+			return notifications;
+
+		} catch (SQLException | IOException | ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		}
+
+		return null;
+	}
 
 	/* Loads the friends list to the DB */
 	public void loadFriendList(Object list, int userID) {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("UPDATE  friendLists SET list=? WHERE listID=?");
+					.prepareStatement("UPDATE  users SET friendLists=? WHERE id=?");
 			ps.setObject(1, list);
 			ps.setInt(2, userID);
 			ps.execute();
-			System.out.println("Exported to DB"+(HashMap<Integer, String>)list);
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
@@ -88,7 +110,7 @@ public class UserSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("SELECT list FROM friendLists WHERE listID=?");
+					.prepareStatement("SELECT friendLists FROM users WHERE id=?");
 			ps.setInt(1, userID);
 
 			ResultSet rs = ps.executeQuery();
@@ -99,53 +121,98 @@ public class UserSqlImplement {
 			if (buf != null)
 				objectIn = new ObjectInputStream(new ByteArrayInputStream(buf));
 			Object friends = objectIn.readObject();
-
+			conn.close();
 			return friends;
 
 		} catch (SQLException | IOException | ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+
 		}
 
 		return null;
 	}
 
-	public User findUser(int u) {
+	@SuppressWarnings("unchecked")
+	public JSONObject findUsersByName(String name) {
+		try {
+			Connection conn = getConnection();
+			String pattern = "\'" + name + "\'";
+			PreparedStatement ps = conn
+					.prepareStatement("select name from users  WHERE name REGEXP "
+							+ pattern);
 
-		/* need to be made croectly */
+			ResultSet rs = ps.executeQuery();
+			JSONObject foundUsers = new JSONObject();
+			while (rs.next()) {
+				foundUsers.put(rs.getString(1), 0);
+
+			}
+			conn.close();
+			return foundUsers;
+
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+
+			return null;
+		}
+
+	}
+
+	/* Used to find a use by his username */
+	public User findUser(String name) {
+
+		try {
+			Connection conn = getConnection();
+			PreparedStatement ps = conn
+					.prepareStatement("select * from users where name = ?");
+			ps.setString(1, name);
+
+			ResultSet rs = ps.executeQuery();
+			if (rs.next()) {
+				User foundUser = new User(rs.getInt(1), rs.getString(2),
+						rs.getString(3));
+				conn.close();
+				return foundUser;
+
+			}
+			conn.close();
+
+		} catch (SQLException | IOException e) {
+			e.printStackTrace();
+
+			return null;
+		}
+
+		return null;
+	}
+
+	/* Used to find a user by his id */
+	public User findUser(int id) {
 
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
 					.prepareStatement("select * from users where id = ?");
-			ps.setInt(1, u);
+			ps.setInt(1, id);
 
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				User foundUser = new User(rs.getString(3), rs.getNString(2), u);
+				User foundUser = new User(id, rs.getString(2), rs.getString(3));
+				conn.close();
 				return foundUser;
 
 			}
+			conn.close();
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
+
 			return null;
 		}
+
 		return null;
 	}
-
-	/*
-	 * @Override public HashMap<String, Object> getAll() { try { Connection conn
-	 * = getConnection(); PreparedStatement ps = conn
-	 * .prepareStatement("select * from \"Utilizator\""); ResultSet rs =
-	 * ps.executeQuery(); HashMap<String, Object> userMap = new HashMap<>();
-	 * HashMap<String, Settlement> settlementMap; while (rs.next()) {
-	 * userMap.put( rs.getString(1), new User(rs.getString(1), rs.getString(2),
-	 * rs .getDouble(3), rs.getInt(5), rs.getInt(4), settlementMap, new
-	 * HashMap<String, Resource>())); }
-	 * 
-	 * return userMap; } catch (SQLException | IOException e) { return null; } }
-	 */
 
 	public Connection getConnection() throws SQLException,
 			FileNotFoundException, IOException {
