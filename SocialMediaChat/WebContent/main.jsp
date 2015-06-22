@@ -34,6 +34,7 @@
 
 <script>
 	var u = "${currentUser.name }";
+	var not=${notificationList};
 	var myFriends = ${myFriends};
 </script>
 
@@ -81,7 +82,7 @@
 
 		<div class="container-fluid ">
 
-			<div class="col-md-2 panel panel-default userInfo">
+			<div class="col-md-2 panel panel-default userInfo" id="userInfo">
 				<div class="panel-heading">User info</div>
 			</div>
 
@@ -127,7 +128,7 @@
 			</div>
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
-				<div class="panel-heading">Friends</div>
+				<div class="panel-heading" >Friends</div>
 
 
 			</div>

@@ -4,61 +4,59 @@ import java.io.Serializable;
 
 public class Notification implements Serializable {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 369765610027968117L;
-	/**
-	 * 
-	 */
 
-	private int id,from;
-	private String type;
-	private boolean accepted;
+
+	private static final long serialVersionUID = 1841415603446178402L;
 	
-
-	/**
-	 * @param from
-	 * @param type
-	 * @param accepted
-	 */
-	public Notification(int from, String type, boolean accepted) {
-		super();
-		this.from = from;
-		this.type = type;
-		this.accepted = accepted;
-	}
-
+	private int id;
+	private String type, from, to;
+	private boolean accepted;
 
 	/**
 	 * @param id
-	 * @param from
 	 * @param type
+	 * @param from
+	 * @param to
 	 * @param accepted
 	 */
-	public Notification(int id, int from, String type, boolean accepted) {
+	public Notification(int id, String type, String from, String to,
+			boolean accepted) {
 		super();
 		this.id = id;
-		this.from = from;
 		this.type = type;
+		this.from = from;
+		this.to = to;
 		this.accepted = accepted;
 	}
 
-
-
-	
-
-
 	/**
-	 * @param from
 	 * @param type
+	 * @param from
+	 * @param to
 	 */
-	public Notification(int from, String type) {
-		super();
-		this.from = from;
+	public Notification(String type, String from, String to) {
+
 		this.type = type;
+		this.from = from;
+		this.to = to;
+		this.accepted = false;
 	}
 
+	/**
+	 * @param id
+	 * @param type
+	 * @param from
+	 * @param to
+	 * @param accepted
+	 */
+	public Notification(int id, String to, String type) {
+
+		this.id = 0;
+		this.type = type;
+		this.from = "";
+		this.to = to;
+		this.accepted = false;
+	}
 
 	public int getId() {
 		return id;
@@ -84,23 +82,30 @@ public class Notification implements Serializable {
 		this.accepted = accepted;
 	}
 
-
-	public int getFrom() {
+	public String getFrom() {
 		return from;
 	}
 
-
-	public void setFrom(int from) {
+	public void setFrom(String from) {
 		this.from = from;
 	}
 
+	public String getTo() {
+		return to;
+	}
+
+	public void setTo(String to) {
+		this.to = to;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Override
 	public String toString() {
 		return "Notification [id=" + id + ", from=" + from + ", type=" + type
 				+ ", accepted=" + accepted + "]";
 	}
-	
-	
 
 }
