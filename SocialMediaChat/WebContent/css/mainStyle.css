@@ -113,7 +113,10 @@ body {
 
 #notificationTab span{
 	float: right;
+<<<<<<< HEAD
 	cursor: pointer;
+=======
+>>>>>>> origin/master
 }
 
 .panel.panel-default.friendList {

@@ -80,6 +80,18 @@ public class LogIn extends HttpServlet {
 	}
 	
 	
+<<<<<<< HEAD
+=======
+	@SuppressWarnings("unchecked")
+	private void loadNotifications(User user){
+		
+		user.setMyNotifications((List<Notification>) dbActions.getNotifications(user.getId()));
+		
+		
+		
+	}
+	
+>>>>>>> origin/master
 	@SuppressWarnings("unchecked")
 	private void loadUserLists(User user){
 

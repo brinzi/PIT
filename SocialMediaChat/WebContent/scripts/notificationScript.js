@@ -58,8 +58,12 @@ function rejectFriendRequest(user,notid){
 	$.ajax({
 		type : "post",
 		url : "NotificationServlet",
+<<<<<<< HEAD
 		data : "data=" + user + "," + u + "," + notid + ",rejectRequest",
 		dataType:"text",
+=======
+		data : "sendTo=" +user+","+u,
+>>>>>>> origin/master
 		success : function() {
 			
 				console.log("request accepted");
@@ -72,6 +76,7 @@ function rejectFriendRequest(user,notid){
 	
 }
 
+<<<<<<< HEAD
 function initNotifications() {
 	console.log(not + "Notification current state");
 
@@ -99,4 +104,25 @@ $(window).load(function() {
 
 	initNotifications();
 
+=======
+$(window).load(function (){
+	
+
+	for ( var notification in not) {
+		if(not[notification].type!="Pending"){
+			$("#userInfo").append(
+					$("<div class=\"panel-body notificationTab\" id=\"notificationTab\"></div>").text(not[notification].type +":"+not[notification].from));
+			$("#notificationTab").append("<span class=\" glyphicon glyphicon-ok\"></span>");
+			$("#notificationTab").append("<span class=\" glyphicon glyphicon-remove\"></span>");
+		}
+		else
+			$("#userInfo").append(
+					$("<div class=\"panel-body notificationTab\" id=\"notificationTab\"></div>")
+						.text(not[notification].type +": friend request to  "+not[notification].to));
+			
+	}
+	 
+	
+	
+>>>>>>> origin/master
 });

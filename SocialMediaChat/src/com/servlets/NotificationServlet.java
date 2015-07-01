@@ -44,6 +44,7 @@ public class NotificationServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+<<<<<<< HEAD
 
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -69,6 +70,29 @@ public class NotificationServlet extends HttpServlet {
 		
 		updateNotificationLists(userA, users[2]);
 		updateNotificationLists(userB, users[2]);
+=======
+	@SuppressWarnings("unchecked")
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String sendTo=request.getParameter("sendTo");
+	
+		String[] users=sendTo.split(",");	
+		UserSqlImplement userDbActions= new UserSqlImplement();
+		System.out.println(users[0]);
+		User userA=userDbActions.findUser(users[0]);
+		User userB=userDbActions.findUser(users[1]);
+		
+		
+		userA.setMyNotifications((List<Notification>) userDbActions.getNotifications(userA.getId()));
+		Notification n= new Notification("Friend request",userB.getName(),userA.getName());
+		userA.addNotification(n);
+		userDbActions.loadNotifications(userA.getMyNotifications(), userA.getId());
+		
+		
+		userB.setMyNotifications((List<Notification>) userDbActions.getNotifications(userB.getId()));
+		n=new Notification(0,userA.getName(), "Pending");
+		userB.addNotification(n);
+		userDbActions.loadNotifications(userB.getMyNotifications(),userB.getId());
+>>>>>>> origin/master
 		
 		
 		
