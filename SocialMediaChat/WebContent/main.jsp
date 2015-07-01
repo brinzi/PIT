@@ -1,16 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta charset="ISO-8859-1">
 
-
-<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
-<link rel="stylesheet" type="text/css" href="css/formStyles.css">
-
-<link rel="stylesheet" type="text/css"
-	href="bootstrap/css/bootstrap.min.css">
 
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -24,7 +17,6 @@
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="scripts/topicsManager.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="scripts/transitionScript.js"></script>
@@ -34,6 +26,7 @@
 
 <script>
 	var u = "${currentUser.name }";
+	var not=${notificationList};
 	var myFriends = ${myFriends};
 </script>
 
@@ -55,7 +48,6 @@
 					<li id="changeNew"><a href="#">Page 1</a></li>
 					<li id="changeCars"><a href="#">Page 2</a></li>
 					<li><a href="#">Page 3</a></li>
-					<li style="text-align: center;"><a href="#">POST</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
@@ -81,12 +73,9 @@
 
 		<div class="container-fluid ">
 
-			<div class="col-md-2 panel panel-default userInfo">
+			<div class="col-md-2 panel panel-default userInfo" id="userInfo">
 				<div class="panel-heading">User info</div>
 			</div>
-
-
-			<div class="col-md-7 topics" id="topicsContainer">
 
 			<div class="col-md-7 searchResults" id="results">
 			</div>
@@ -98,12 +87,37 @@
 				</div>
 
 
+				<div class="well topic">
+					<p>Topics about new</p>
+				</div>
+				<div class="well topic">
+					<p>Topics about new</p>
+				</div>
+				<div class="well topic">
+					<p>Topics about new</p>
+				</div>
+				<div class="well topic">
+					<p>Topics about new</p>
+				</div>
 
-				<div class="panel panel-default" onclick="showContent();">
-					<div class="panel-heading">
-						<h3 class="panel-title">Panel primary</h3>
-					</div>
-					<div class="panel-body">Panel content</div>
+			</div>
+
+
+			<div class="col-md-7 topics" id="cars">
+
+
+				<div class="well topic">
+					<p>Topics about cars</p>
+				</div>
+
+				<div class="well topic">
+					<p>Topics about cars</p>
+				</div>
+				<div class="well topic">
+					<p>Topics about cars</p>
+				</div>
+				<div class="well topic">
+					<p>Topics about cars</p>
 				</div>
 
 
@@ -127,7 +141,7 @@
 			</div>
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
-				<div class="panel-heading">Friends</div>
+				<div class="panel-heading" >Friends</div>
 
 
 			</div>

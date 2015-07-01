@@ -25,7 +25,7 @@ public class CommentSqlImplement {
 			
 			ps.setString(1, comment.getContent());
 			ps.setInt(2, comment.getUserId());
-			ps.setInt(3, comment.getTopicId());
+//			ps.setInt(3, comment.getTopicId());
 			ps.execute();
 			System.out.println("executed");
 

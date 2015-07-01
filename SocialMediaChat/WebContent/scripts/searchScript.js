@@ -9,7 +9,7 @@ $(window).load(function() {
 		var results="";
 		if ($("#search").val() != "") {
 			$.ajax({
-				type : "post",
+				type :"post",
 				url : "Search",
 				data : "input=" + $("#search").val(),
 				success : function(response) {

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONObject;
 
-import com.dbstuff.NotificationsSql;
 import com.dbstuff.UserSqlImplement;
 import com.google.gson.Gson;
 import com.userdata.Notification;
@@ -58,7 +57,7 @@ public class LogIn extends HttpServlet {
 //		System.out.println(user.getEmail() + user.getPassword());
 		if ((user = dbActions.findUser(user.hashCode())) != null) {
 			
-			loadNotifications(user);
+		
 			loadUserLists(user);
 			//user.addFriend(dbActions.findUser(106323914));
 			//dbActions.loadFriendList(user.getFriendList(), user.getId());
@@ -67,27 +66,19 @@ public class LogIn extends HttpServlet {
 			
 			JSONObject myMap = new JSONObject(user.getFriendList());
 			String  notifications= new Gson().toJson(user.getMyNotifications());
+			System.out.println(notifications);
 			
 			
 			System.out.println(myMap);
 			request.getSession().setAttribute("currentUser", user);
 			request.getSession().setAttribute("myFriends", myMap);
 			request.getSession().setAttribute("notificationList", notifications);
-
 			response.sendRedirect("main.jsp");
 
 		}
 
 	}
 	
-	
-	private void loadNotifications(User user){
-		
-		user.setMyNotifications((List<Notification>) dbActions.getNotifications(user.getId()));
-		
-		
-		
-	}
 	
 	@SuppressWarnings("unchecked")
 	private void loadUserLists(User user){
