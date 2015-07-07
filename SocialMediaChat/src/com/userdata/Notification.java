@@ -39,6 +39,10 @@ public class Notification implements Serializable {
 	public Notification(int id, int from, String type, boolean accepted) {
 		super();
 		this.id = id;
+	public Notification(String type, String from, String to) {
+		
+		this.id=hashCode();
+		this.type = type;
 		this.from = from;
 		this.type = type;
 		this.accepted = accepted;
@@ -56,6 +60,9 @@ public class Notification implements Serializable {
 	public Notification(int from, String type) {
 		super();
 		this.from = from;
+	public Notification(int id, String to, String type) {
+
+		this.id = id;
 		this.type = type;
 	}
 
@@ -94,6 +101,48 @@ public class Notification implements Serializable {
 		this.from = from;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((from == null) ? 0 : from.hashCode());
+		result = prime * result + ((to == null) ? 0 : to.hashCode());
+		result = prime * result + ((type == null) ? 0 : type.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Notification other = (Notification) obj;
+		if (from == null) {
+			if (other.from != null)
+				return false;
+		} else if (!from.equals(other.from))
+			return false;
+		if (to == null) {
+			if (other.to != null)
+				return false;
+		} else if (!to.equals(other.to))
+			return false;
+		if (type == null) {
+			if (other.type != null)
+				return false;
+		} else if (!type.equals(other.type))
+			return false;
+		return true;
+	}
 
 	@Override
 	public String toString() {

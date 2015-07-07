@@ -54,6 +54,31 @@ public class NotificationServlet extends HttpServlet {
 		NotificationsSql notificationsDbAction= new NotificationsSql();
 		notificationsDbAction.addItem(n);
 		
+
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String data = request.getParameter("data");
+		String[] users = data.split(",");
+		response.setContentType("application/json");
+
+		if (users[3].equals("friendRequest")) {
+			response.getWriter().println(handleFriendRequest(users));
+
+		} else if (users[3].equals("rejectrequest")) {
+			handleRejectRequest(users);
+		} else {
+			handleAcceptRequest(users);
+		}
+
+	}
+
+	private void handleRejectRequest(String[] users) {
+		User userA = userDbActions.findUser(users[0]);
+		User userB = userDbActions.findUser(users[1]);
+		
+		
+		updateNotificationLists(userA, users[2]);
+		updateNotificationLists(userB, users[2]);
 		
 		
 		

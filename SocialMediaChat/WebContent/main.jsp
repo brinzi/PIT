@@ -29,6 +29,7 @@
 
 <script>
 	var u = "${currentUser.name }";
+<<<<<<< HEAD
 
 	var not = $
 	{
@@ -38,6 +39,10 @@
 	{
 		myFriends
 	};
+=======
+	var not = ${notificationList};
+	var myFriends = ${myFriends};
+>>>>>>> 2a1f576566bf9e275a82960d72985cef8076f00e
 </script>
 
 
@@ -89,6 +94,7 @@
 			</div>
 
 			<div class="col-md-7 searchResults" id="results"></div>
+<<<<<<< HEAD
 
 			<div class="col-md-7 postTopicForm" id="postTopicForm"
 				style="display: none;">
@@ -112,6 +118,8 @@
 					</fieldset>
 				</form>
 			</div>
+=======
+>>>>>>> 2a1f576566bf9e275a82960d72985cef8076f00e
 
 
 			<div class=" col-md-7 topics" id="topicContainer">
@@ -125,11 +133,25 @@
 			
 
 			<div class="col-md-3" id="chat">
+				<ul class="nav nav-tabs">
+					
+					<li class="dropdown"><a aria-expanded="false"
+						class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<span class="plus"> <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+							<li class="divider"></li>
+							<li><a href="#dropdown2" data-toggle="tab">Another
+									action</a></li>
+						</ul></li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					
+					
+				</div>
 
-
-				<div id="display"></div>
-				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				<div>
+			
 					<form action="">
 
 						<input id="userInput" type="text" name="textArea"
@@ -139,7 +161,7 @@
 					</form>
 				</div>
 
-			</div>
+			
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
 				<div class="panel-heading">Friends</div>

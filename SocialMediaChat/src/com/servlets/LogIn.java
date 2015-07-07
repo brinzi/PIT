@@ -76,7 +76,11 @@ public class LogIn extends HttpServlet {
 			request.getSession().setAttribute("currentUser", user);
 			request.getSession().setAttribute("myFriends", myMap);
 			request.getSession().setAttribute("notificationList", notifications);
-
+			Cookie userid= new Cookie("userId", ""+user.getId());
+			userid.setMaxAge(60*60*24);
+			
+			response.addCookie(userid);
+			
 			response.sendRedirect("main.jsp");
 
 		}

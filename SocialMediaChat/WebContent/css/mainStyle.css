@@ -69,7 +69,7 @@ body {
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 }
 
-#display {
+.tab-pane fade in active display {
 	margin: 1px auto;
 	display: block;
 	overflow-y: auto;
@@ -105,6 +105,7 @@ body {
 	padding-left: 0px;
 	padding-right: 0px;
 	float: right;
+	cursor: pointer;
 }
 
 .panel.panel-default.userInfo {
