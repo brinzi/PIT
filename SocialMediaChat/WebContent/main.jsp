@@ -30,14 +30,8 @@
 <script>
 	var u = "${currentUser.name }";
 
-	var not = $
-	{
-		notificationList
-	};
-	var myFriends = $
-	{
-		myFriends
-	};
+	var not = ${notificationList};
+	var myFriends = ${myFriends};
 </script>
 
 
@@ -124,12 +118,29 @@
 
 			
 
+			
+
+
 			<div class="col-md-3" id="chat">
+				<ul class="nav nav-tabs">
+					
+					<li class="dropdown"><a aria-expanded="false"
+						class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<span class="plus"> <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+							<li class="divider"></li>
+							<li><a href="#dropdown2" data-toggle="tab">Another
+									action</a></li>
+						</ul></li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					
+					
+				</div>
 
-
-				<div id="display"></div>
-				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				<div>
+			
 					<form action="">
 
 						<input id="userInput" type="text" name="textArea"
@@ -139,7 +150,7 @@
 					</form>
 				</div>
 
-			</div>
+			
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
 				<div class="panel-heading">Friends</div>

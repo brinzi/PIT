@@ -2,6 +2,7 @@ package com.userdata;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -154,8 +155,14 @@ public class User {
 		
 	}
 	
-	public void removeNotification(Notification n){
-		myNotifications.remove(n);
+	public void removeNotification(int id){
+		Iterator<Notification> iter = myNotifications.iterator();
+
+		while (iter.hasNext()) {
+		   
+		    if (iter.next().getId()==id)
+		        iter.remove();
+		}
 	}
 
 
