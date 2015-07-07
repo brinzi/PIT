@@ -101,6 +101,11 @@ body {
 	float: left;
 }
 
+.panel.panel-default.friendList {
+	padding-left: 0px;
+	padding-right: 0px;
+	float: right;
+}
 
 .panel.panel-default.userInfo {
 	padding-left: 0px;
@@ -111,26 +116,11 @@ body {
 	
 }
 
-#notificationTab span{
-	float: right;
-<<<<<<< HEAD
-	cursor: pointer;
-=======
->>>>>>> origin/master
-}
-
-.panel.panel-default.friendList {
-	padding-left: 0px;
-	padding-right: 0px;
-	float: right;
-}
-
-
 #friendTab {
 	margin: auto;
 }
 
-#friendTab:HOVER, #notificationTab:HOVER{
+#friendTab:HOVER {
 	background: rgba(0, 0, 0, 0.08) none repeat scroll 0% 0%;
 	cursor: default;
 }

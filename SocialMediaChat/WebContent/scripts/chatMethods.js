@@ -2,12 +2,6 @@
  * Chat screen functions
  */
 
-function loadFriend(friend) {
-				$("#friendList").append(
-						$("<div class=\"panel-body\" id=\"friendTab\"></div>")
-								.text(friend));
-			}
-
 $(window).load(
 		function() {
 
@@ -15,7 +9,11 @@ $(window).load(
 				loadFriend(myFriends[friend]);
 			}
 
-			
+			function loadFriend(friend) {
+				$("#friendList").append(
+						$("<div class=\"panel-body\" id=\"friendTab\"></div>")
+								.text(friend));
+			}
 
 			var socket = new WebSocket("ws://localhost:8080/socket");
 

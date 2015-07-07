@@ -13,6 +13,8 @@ public class Topic {
 	private int userId;
 
 	private ArrayList<Comment> comments;
+	
+	public Topic() {}
 
 	public Topic(String title, String content, int userId) {
 		this.title = title;

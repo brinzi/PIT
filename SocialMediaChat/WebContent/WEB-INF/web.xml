@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>SocialMediaChat</display-name>
-  
   <servlet>
     <servlet-name>Register</servlet-name>
     <servlet-class>com.servlets.Register</servlet-class>
@@ -22,12 +21,10 @@
     <servlet-name>SocketServ</servlet-name>
     <servlet-class>com.servlets.SocketServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>SocketServ</servlet-name>
     <url-pattern>/socket/*</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>Search</servlet-name>
     <servlet-class>com.servlets.Search</servlet-class>
@@ -36,7 +33,6 @@
     <servlet-name>Search</servlet-name>
     <url-pattern>/Search/*</url-pattern>
   </servlet-mapping>
- 
   <servlet>
     <servlet-name>NotificationServlet</servlet-name>
     <servlet-class>com.servlets.NotificationServlet</servlet-class>
@@ -45,7 +41,22 @@
     <servlet-name>NotificationServlet</servlet-name>
     <url-pattern>/NotificationServlet/*</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <servlet-name>AddTopic</servlet-name>
+    <servlet-class>com.servlets.AddTopic</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AddTopic</servlet-name>
+    <url-pattern>/AddTopic/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>GetPosts</servlet-name>
+  	<servlet-class>com.servlets.GetPosts</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GetPosts</servlet-name>
+  	<url-pattern>/GetPosts/*</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

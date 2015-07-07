@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -23,11 +24,20 @@
 <script src="scripts/chatMethods.js"></script>
 <script src="scripts/searchScript.js"></script>
 <script src="scripts/notificationScript.js"></script>
+<script src="scripts/postTopic.js"></script>
+<script src="scripts/topicGenerator.js"></script>
 
 <script>
 	var u = "${currentUser.name }";
-	var not=${notificationList};
-	var myFriends = ${myFriends};
+
+	var not = $
+	{
+		notificationList
+	};
+	var myFriends = $
+	{
+		myFriends
+	};
 </script>
 
 
@@ -47,7 +57,7 @@
 					<li class="active"><a href="#">Home</a></li>
 					<li id="changeNew"><a href="#">Page 1</a></li>
 					<li id="changeCars"><a href="#">Page 2</a></li>
-					<li><a href="#">Page 3</a></li>
+					<li id="PostTopic"><a href="#">POST</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
 
@@ -56,7 +66,8 @@
 				</ul>
 				<form class="navbar-form navbar-right search" role="search">
 					<div class="form-group">
-						<input class="form-control" id="search" placeholder="Find pepole" type="text">
+						<input class="form-control" id="search" placeholder="Find pepole"
+							type="text">
 						<button class="btn">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
@@ -73,55 +84,45 @@
 
 		<div class="container-fluid ">
 
-			<div class="col-md-2 panel panel-default userInfo" id="userInfo">
+			<div class="col-md-2 panel panel-default userInfo">
 				<div class="panel-heading">User info</div>
 			</div>
 
-			<div class="col-md-7 searchResults" id="results">
+			<div class="col-md-7 searchResults" id="results"></div>
+
+			<div class="col-md-7 postTopicForm" id="postTopicForm"
+				style="display: none;">
+				<form class="form-horizontal" method="POST" action="AddTopic">
+					<fieldset>
+						<legend>Post</legend>
+						<div class="form-group">
+							<div class="col-lg-10">
+								<input class="form-control" id="inputTitle" placeholder="Title"
+									type="text" name="title">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-10">
+								<textarea class="form-control" rows="3" id="textArea"
+									placeholder="Add text here." style="resize: none;" name="content"></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="reset" class="btn btn-default" style="margin-top:10px;" id="cancelPost">Cancel</button>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 
-			<div class=" col-md-7 topics" id="new">
 
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
+			<div class=" col-md-7 topics" id="topicContainer">
 
-
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about new</p>
-				</div>
+				/* STUFF IS ADDED HERE */
+				
 
 			</div>
 
 
-			<div class="col-md-7 topics" id="cars">
-
-
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-				<div class="well topic">
-					<p>Topics about cars</p>
-				</div>
-
-
-			</div>
+			
 
 			<div class="col-md-3" id="chat">
 
@@ -141,7 +142,7 @@
 			</div>
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
-				<div class="panel-heading" >Friends</div>
+				<div class="panel-heading">Friends</div>
 
 
 			</div>

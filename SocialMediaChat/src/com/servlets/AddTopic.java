@@ -1,7 +1,6 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,20 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dbstuff.TopicSqlImplement;
-import com.google.gson.Gson;
 import com.topicdata.Topic;
 
 /**
- * Servlet implementation class TopicsServlet
+ * Servlet implementation class AddTopic
  */
-public class TopicsServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+public class AddTopic extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	
+	TopicSqlImplement dbActions;
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public TopicsServlet() {
+	public AddTopic() {
 		super();
+		dbActions = new TopicSqlImplement();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -32,18 +34,7 @@ public class TopicsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		TopicSqlImplement tpSql = new TopicSqlImplement();
-
-		ArrayList<Topic> topics = tpSql.getAll();
-
-		String json = new Gson().toJson(topics);
-
-		response.setContentType("application/json");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(json.toString());
-		
-		System.out.println(json);
+		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -52,7 +43,14 @@ public class TopicsServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		response.setContentType("text/html");
+
+		Topic topic = new Topic(request.getParameter("title"),
+				request.getParameter("content"), -1);
+		dbActions.addItem(topic);
+		
+		response.sendRedirect("main.jsp");
+
 	}
 
 }

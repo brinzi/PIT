@@ -1,30 +1,33 @@
-
 package com.servlets;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dbstuff.NotificationsSql;
-import com.dbstuff.UserSqlImplement;
-import com.userdata.Notification;
-import com.userdata.User;
+import org.json.simple.JSONValue;
+
+import com.dbstuff.TopicSqlImplement;
+import com.google.gson.Gson;
+import com.topicdata.Topic;
 
 /**
- * Servlet implementation class NotificationServlet
+ * Servlet implementation class GetPosts
  */
-public class NotificationServlet extends HttpServlet {
+public class GetPosts extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
+	TopicSqlImplement dbActions;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NotificationServlet() {
+    public GetPosts() {
         super();
+        dbActions = new TopicSqlImplement();
         // TODO Auto-generated constructor stub
     }
 
@@ -38,24 +41,25 @@ public class NotificationServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@SuppressWarnings("unchecked")
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username=request.getParameter("input");
+		// TODO Auto-generated method stub
 		
-		UserSqlImplement userDbActions= new UserSqlImplement();
-		User user=userDbActions.findUser(username);
+		response.setContentType("text/html");
+
+		ArrayList<Topic> topics= dbActions.getAll();
+//		for ( Topic i : topics)
+//			System.out.println(i.getTitle());
+		String gson = new Gson().toJson(topics);
+	
 		
-		user.setMyNotifications((List<Notification>) userDbActions.getNotifications(user.getId()));
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
 		
-		Notification n= new Notification(user.getId(), "Friend request");
-		user.addNotification(n);
-		userDbActions.loadNotifications(user.getMyNotifications(), user.getId());
+		//String json = JSONValue.toJSONString(topics);
 		
-		NotificationsSql notificationsDbAction= new NotificationsSql();
-		notificationsDbAction.addItem(n);
+		System.out.println(gson);
 		
-		
-		
+		response.getWriter().println(gson);
 		
 	}
 

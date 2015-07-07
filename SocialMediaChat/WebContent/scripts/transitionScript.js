@@ -16,17 +16,7 @@ $(document).ready(function(){
 
 	$(cur).show();
 	
-
-	
-	$("#changeCars").click(function(){
-		cur=change("#cars",cur);
-	});
-	
-	$("#changeNew").click(function(){
-		cur=change("#new",cur);
-	});
-	
-	
+		
 	$(document).on("click","#friendTab", function(){
 		$("#chat").slideDown();
 	});

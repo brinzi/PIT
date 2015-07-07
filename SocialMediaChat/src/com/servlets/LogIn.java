@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,10 +55,13 @@ public class LogIn extends HttpServlet {
 
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"));
+		Cookie cookie = new Cookie("name", request.getParameter("email"));
+		cookie.setMaxAge(100*100);
+		response.addCookie(cookie);
 //		System.out.println(user.getEmail() + user.getPassword());
 		if ((user = dbActions.findUser(user.hashCode())) != null) {
 			
-		
+			loadNotifications(user);
 			loadUserLists(user);
 			//user.addFriend(dbActions.findUser(106323914));
 			//dbActions.loadFriendList(user.getFriendList(), user.getId());
@@ -68,11 +72,11 @@ public class LogIn extends HttpServlet {
 			String  notifications= new Gson().toJson(user.getMyNotifications());
 			System.out.println(notifications);
 			
-			
 			System.out.println(myMap);
 			request.getSession().setAttribute("currentUser", user);
 			request.getSession().setAttribute("myFriends", myMap);
 			request.getSession().setAttribute("notificationList", notifications);
+
 			response.sendRedirect("main.jsp");
 
 		}
@@ -80,8 +84,6 @@ public class LogIn extends HttpServlet {
 	}
 	
 	
-<<<<<<< HEAD
-=======
 	@SuppressWarnings("unchecked")
 	private void loadNotifications(User user){
 		
@@ -91,7 +93,6 @@ public class LogIn extends HttpServlet {
 		
 	}
 	
->>>>>>> origin/master
 	@SuppressWarnings("unchecked")
 	private void loadUserLists(User user){
 
