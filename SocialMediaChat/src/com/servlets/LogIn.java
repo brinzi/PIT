@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -73,6 +74,11 @@ public class LogIn extends HttpServlet {
 			request.getSession().setAttribute("currentUser", user);
 			request.getSession().setAttribute("myFriends", myMap);
 			request.getSession().setAttribute("notificationList", notifications);
+			Cookie userid= new Cookie("userId", ""+user.getId());
+			userid.setMaxAge(60*60*24);
+			
+			response.addCookie(userid);
+			
 			response.sendRedirect("main.jsp");
 
 		}
@@ -80,18 +86,6 @@ public class LogIn extends HttpServlet {
 	}
 	
 	
-<<<<<<< HEAD
-=======
-	@SuppressWarnings("unchecked")
-	private void loadNotifications(User user){
-		
-		user.setMyNotifications((List<Notification>) dbActions.getNotifications(user.getId()));
-		
-		
-		
-	}
-	
->>>>>>> origin/master
 	@SuppressWarnings("unchecked")
 	private void loadUserLists(User user){
 

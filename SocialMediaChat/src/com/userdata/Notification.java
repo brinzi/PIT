@@ -35,12 +35,8 @@ public class Notification implements Serializable {
 	 * @param to
 	 */
 	public Notification(String type, String from, String to) {
-<<<<<<< HEAD
 		
 		this.id=hashCode();
-=======
-
->>>>>>> origin/master
 		this.type = type;
 		this.from = from;
 		this.to = to;
@@ -56,11 +52,7 @@ public class Notification implements Serializable {
 	 */
 	public Notification(int id, String to, String type) {
 
-<<<<<<< HEAD
 		this.id = id;
-=======
-		this.id = 0;
->>>>>>> origin/master
 		this.type = type;
 		this.from = "";
 		this.to = to;
@@ -110,7 +102,6 @@ public class Notification implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-<<<<<<< HEAD
 
 	
 	
@@ -150,8 +141,6 @@ public class Notification implements Serializable {
 			return false;
 		return true;
 	}
-=======
->>>>>>> origin/master
 
 	@Override
 	public String toString() {

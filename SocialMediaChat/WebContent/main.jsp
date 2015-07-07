@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@
 
 <script>
 	var u = "${currentUser.name }";
-	var not=${notificationList};
+	var not = ${notificationList};
 	var myFriends = ${myFriends};
 </script>
 
@@ -56,7 +57,8 @@
 				</ul>
 				<form class="navbar-form navbar-right search" role="search">
 					<div class="form-group">
-						<input class="form-control" id="search" placeholder="Find pepole" type="text">
+						<input class="form-control" id="search" placeholder="Find pepole"
+							type="text">
 						<button class="btn">
 							<span class="glyphicon glyphicon-search"></span>
 						</button>
@@ -77,8 +79,7 @@
 				<div class="panel-heading">User info</div>
 			</div>
 
-			<div class="col-md-7 searchResults" id="results">
-			</div>
+			<div class="col-md-7 searchResults" id="results"></div>
 
 			<div class=" col-md-7 topics" id="new">
 
@@ -124,11 +125,25 @@
 			</div>
 
 			<div class="col-md-3" id="chat">
+				<ul class="nav nav-tabs">
+					
+					<li class="dropdown"><a aria-expanded="false"
+						class="dropdown-toggle" data-toggle="dropdown" href="#">
+							<span class="plus"> <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li><a href="#dropdown1" data-toggle="tab">Action</a></li>
+							<li class="divider"></li>
+							<li><a href="#dropdown2" data-toggle="tab">Another
+									action</a></li>
+						</ul></li>
+				</ul>
+				<div id="myTabContent" class="tab-content">
+					
+					
+				</div>
 
-
-				<div id="display"></div>
-				<!-- THINGS NEED TO BE DONE HERE !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-				<div>
+			
 					<form action="">
 
 						<input id="userInput" type="text" name="textArea"
@@ -138,10 +153,10 @@
 					</form>
 				</div>
 
-			</div>
+			
 
 			<div class="col-md-3 panel panel-default friendList" id="friendList">
-				<div class="panel-heading" >Friends</div>
+				<div class="panel-heading">Friends</div>
 
 
 			</div>
