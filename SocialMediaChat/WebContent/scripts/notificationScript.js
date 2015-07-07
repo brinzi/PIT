@@ -78,11 +78,12 @@ function initNotifications() {
 	$("#userInfo").find(".friendRequest").remove();
 
 	for ( var notification in not) {
-		console.log(not[notification]);
+		console.log(not[notification].type);
 		if (not[notification].type != "Pending") {
 			loadFriendRequestNotification(not[notification]);
 
 		} else {
+			console.log("i try to append them.................");
 			loadPendingNotification(not[notification]);
 
 		}

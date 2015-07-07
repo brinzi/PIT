@@ -78,7 +78,7 @@
 
 		<div class="container-fluid ">
 
-			<div class="col-md-2 panel panel-default userInfo">
+			<div class="col-md-2 panel panel-default userInfo" id="userInfo">
 				<div class="panel-heading">User info</div>
 			</div>
 
