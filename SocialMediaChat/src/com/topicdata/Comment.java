@@ -7,16 +7,27 @@ public class Comment {
 	private String content;
 
 	private int userId;
+	
+	private int topicId;
 
 	public Comment(String content, int userId) {
 		this.content = content;
 		this.userId = userId;
 	}
 
-	public Comment(int id, String content, int userId) {
+	public Comment(int id, String content, int userId, int topicId) {
 		this.id = id;
 		this.content = content;
 		this.userId = userId;
+		this.topicId = topicId;
+	}
+
+	public int getTopicId() {
+		return topicId;
+	}
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
 	}
 
 	public int getId() {

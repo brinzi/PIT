@@ -9,22 +9,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.topicdata.Topic;
+import com.topicdata.Comment;
 
-public class TopicSqlImplement {
+
+public class CommentSqlImplement {
 
 	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
 	private Connection conn;
 
-	public void addItem(Topic topic) {
+	public void addItem(Comment comment) {
 
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO topics( title, content, user_id) VALUES (?, ?, ?)");
-			ps.setString(1, topic.getTitle());
-			ps.setString(2, topic.getContent());
-			ps.setInt(3, topic.getUserId());
+					.prepareStatement("INSERT INTO comments( title, content, user_id) VALUES (?, ?)");
+			ps.setString(1, comment.getContent());
+			ps.setInt(2, comment.getUserId());
 			ps.execute();
 			System.out.println("executed");
 
@@ -33,29 +33,28 @@ public class TopicSqlImplement {
 		}
 	}
 
-	public ArrayList<Topic> getAll() {
+	public ArrayList<Comment> getAll() {
 
-		ArrayList<Topic> topics;
+		ArrayList<Comment> comments;
 		try {
 			Connection conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("select * from topics");
+					.prepareStatement("select * from comments");
 
 			ResultSet rs = ps.executeQuery();
 			
-			topics = new ArrayList<Topic>();
+			comments = new ArrayList<Comment>();
 			while (rs.next()) {
-				topics.add(new Topic(rs.getInt(1), rs.getNString(2), rs
-						.getNString(3), rs.getInt(4)));
+				comments.add(new Comment(rs.getInt(1), rs.getNString(2), rs.getInt(3), rs.getInt(4)));
 				
 			}
-			//System.out.println(topics.get(1).getContent());
+			System.out.println(comments.get(1).getContent());
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 			return null;
 		}
-		return topics;
+		return comments;
 	}
 
 	public Connection getConnection() throws SQLException,
