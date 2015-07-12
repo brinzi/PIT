@@ -1,11 +1,14 @@
 package com.servlets;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.WebSocketListener;
+
+import com.chatstuff.ChatEngine;
+import com.chatstuff.Message;
+import com.google.gson.Gson;
 
 /**
  * Servlet implementation class ChatSocket
@@ -14,11 +17,11 @@ import org.eclipse.jetty.websocket.api.WebSocketListener;
 public class ChatWebSocket implements WebSocketListener {
 
 	private Session conn;
-	private static List<ChatWebSocket> currentUsers=new ArrayList<ChatWebSocket>();;
+	private ChatEngine chatRooms;
 
-	public ChatWebSocket() {
-
-		}
+	public ChatWebSocket(ChatEngine e) {
+		chatRooms = e;
+	}
 
 	@Override
 	public void onWebSocketBinary(byte[] arg0, int arg1, int arg2) {
@@ -27,18 +30,17 @@ public class ChatWebSocket implements WebSocketListener {
 	}
 
 	@Override
-	public void onWebSocketClose(int arg0, String arg1) {
+	public void onWebSocketClose(int id, String arg1) {
 		conn.close();
-		currentUsers.remove(this);
+		chatRooms.remove(this);
 
 	}
 
 	@Override
-	public void onWebSocketConnect(
-			org.eclipse.jetty.websocket.api.Session session) {
+	public void onWebSocketConnect(Session session) {
 		System.out.println("connection is open");
-		conn=session;
-		currentUsers.add(this);
+		conn = session;
+
 	}
 
 	@Override
@@ -48,21 +50,32 @@ public class ChatWebSocket implements WebSocketListener {
 	}
 
 	@Override
-	public void onWebSocketText(String msg) {
+	public void onWebSocketText(String text) {
+		System.out.println(text);
+		Message msg = new Gson().fromJson(text, Message.class);
+		System.out.println(msg.getValue().toString());
+		if (msg.getType() == 0) {
 
-		System.out.println(msg);
+			chatRooms.add(Integer.parseInt(msg.getValue()), this);
+			System.out.println("Connection Opened " + chatRooms.toString());
+		} else {
+			try {
 
-		
-		try {
-			for (ChatWebSocket x : currentUsers) {
-				x.conn.getRemote().sendString(msg);
-				
+				Map<Integer, ChatWebSocket> map = chatRooms.getParticipants();
+				for (Integer x : msg.getTo()) {
+					System.out.println(x);
+					if (map.containsKey(x)) {
+
+						map.get(x).conn.getRemote().sendString(text);
+					}
+				}
+				if (map.containsKey(msg.getFrom()));
+					this.conn.getRemote().sendString(text);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
-
 	}
 
 }

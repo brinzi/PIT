@@ -11,11 +11,11 @@ import java.sql.SQLException;
 
 import com.mysql.jdbc.Statement;
 import com.userdata.Notification;
-
+/*
 public class NotificationsSql implements Serializable {
 	/**
 	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
 	private Connection conn;
@@ -110,3 +110,4 @@ public class NotificationsSql implements Serializable {
 	}
 
 }
+*/

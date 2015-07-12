@@ -69,7 +69,7 @@ body {
 	border-color: #c4c4c4 #d1d1d1 #d4d4d4;
 }
 
-#display {
+.tab-pane fade in active display {
 	margin: 1px auto;
 	display: block;
 	overflow-y: auto;
@@ -101,11 +101,6 @@ body {
 	float: left;
 }
 
-.panel.panel-default.friendList {
-	padding-left: 0px;
-	padding-right: 0px;
-	float: right;
-}
 
 .panel.panel-default.userInfo {
 	padding-left: 0px;
@@ -116,11 +111,23 @@ body {
 	
 }
 
+#notificationTab span{
+	float: right;
+	cursor: pointer;
+}
+
+.panel.panel-default.friendList {
+	padding-left: 0px;
+	padding-right: 0px;
+	float: right;
+}
+
+
 #friendTab {
 	margin: auto;
 }
 
-#friendTab:HOVER {
+#friendTab:HOVER, #notificationTab:HOVER{
 	background: rgba(0, 0, 0, 0.08) none repeat scroll 0% 0%;
 	cursor: default;
 }
