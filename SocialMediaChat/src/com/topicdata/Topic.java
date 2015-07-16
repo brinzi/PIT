@@ -11,7 +11,10 @@ public class Topic {
 	private String content;
 
 	private int userId;
+	
+	private String fileName;
 
+	
 	private ArrayList<Comment> comments;
 	
 	public Topic() {}
@@ -22,12 +25,37 @@ public class Topic {
 		this.userId = userId;
 	}
 
+	public Topic(String title, String content, int userId, String fileName) {
+		this.title = title;
+		this.content = content;
+		this.userId = userId;
+		this.fileName = fileName;
+	}
+	
 	public Topic(int id, String title, String content, int userId) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.userId = userId;
 	}
+	
+	public Topic(int id, String title, String content, int userId, String fileName) {
+		this.id = id;
+		this.title = title;
+		this.content = content;
+		this.userId = userId;
+		this.fileName = fileName;
+	}
+	
+	
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 
 	public int getId() {
 		return id;

@@ -28,6 +28,11 @@ body {
 	background-color: #047195;
 }
 
+#topicImage{
+	width: 300px;
+	heigth: 400px;
+}
+
 #chat form {
 	position: absolute;
 	width: 100%;

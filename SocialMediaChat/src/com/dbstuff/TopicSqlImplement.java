@@ -21,10 +21,11 @@ public class TopicSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO topics( title, content, user_id) VALUES (?, ?, ?)");
+					.prepareStatement("INSERT INTO topics( title, content, user_id, file) VALUES (?, ?, ?, ?)");
 			ps.setString(1, topic.getTitle());
 			ps.setString(2, topic.getContent());
 			ps.setInt(3, topic.getUserId());
+			ps.setString(4, topic.getFileName());
 			ps.execute();
 			System.out.println("executed");
 
@@ -45,8 +46,9 @@ public class TopicSqlImplement {
 			
 			topics = new ArrayList<Topic>();
 			while (rs.next()) {
-				topics.add(new Topic(rs.getInt(1), rs.getNString(2), rs
-						.getNString(3), rs.getInt(4)));
+			
+					topics.add(new Topic(rs.getInt(1), rs.getNString(2), rs
+						.getNString(3), rs.getInt(4),rs.getNString(5)));
 				
 			}
 			//System.out.println(topics.get(1).getContent());

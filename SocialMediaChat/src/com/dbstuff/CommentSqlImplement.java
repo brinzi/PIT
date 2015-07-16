@@ -22,9 +22,10 @@ public class CommentSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO comments( title, content, user_id) VALUES (?, ?)");
+					.prepareStatement("INSERT INTO comments( text, user_id, topic_id) VALUES (?, ?, ?)");
 			ps.setString(1, comment.getContent());
 			ps.setInt(2, comment.getUserId());
+			ps.setInt(3, comment.getTopicId());
 			ps.execute();
 			System.out.println("executed");
 
@@ -48,7 +49,6 @@ public class CommentSqlImplement {
 				comments.add(new Comment(rs.getInt(1), rs.getNString(2), rs.getInt(3), rs.getInt(4)));
 				
 			}
-			System.out.println(comments.get(1).getContent());
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();

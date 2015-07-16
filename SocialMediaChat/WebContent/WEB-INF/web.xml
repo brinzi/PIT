@@ -50,12 +50,12 @@
     <url-pattern>/AddTopic/*</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>GetPosts</servlet-name>
-  	<servlet-class>com.servlets.GetPosts</servlet-class>
+    <servlet-name>GetPosts</servlet-name>
+    <servlet-class>com.servlets.GetPosts</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>GetPosts</servlet-name>
-  	<url-pattern>/GetPosts/*</url-pattern>
+    <servlet-name>GetPosts</servlet-name>
+    <url-pattern>/GetPosts/*</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

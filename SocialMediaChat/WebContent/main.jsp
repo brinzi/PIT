@@ -29,7 +29,6 @@
 
 <script>
 	var u = "${currentUser.name }";
-
 	var not = ${notificationList};
 	var myFriends = ${myFriends};
 </script>
@@ -86,7 +85,7 @@
 
 			<div class="col-md-7 postTopicForm" id="postTopicForm"
 				style="display: none;">
-				<form class="form-horizontal" method="POST" action="AddTopic">
+				<form class="form-horizontal" method="POST" action="AddTopic" enctype="multipart/form-data">
 					<fieldset>
 						<legend>Post</legend>
 						<div class="form-group">
@@ -97,6 +96,8 @@
 						</div>
 						<div class="form-group">
 							<div class="col-lg-10">
+								<input type="file" class="form-control" name="file" />
+								</br>
 								<textarea class="form-control" rows="3" id="textArea"
 									placeholder="Add text here." style="resize: none;" name="content"></textarea>
 							</div>

@@ -49,6 +49,7 @@ public class GetPosts extends HttpServlet {
 		ArrayList<Topic> topics= dbActions.getAll();
 //		for ( Topic i : topics)
 //			System.out.println(i.getTitle());
+		System.out.println(getServletContext().getRealPath("/"));
 		String gson = new Gson().toJson(topics);
 	
 		
@@ -57,7 +58,6 @@ public class GetPosts extends HttpServlet {
 		
 		//String json = JSONValue.toJSONString(topics);
 		
-		System.out.println(gson);
 		
 		response.getWriter().println(gson);
 		

@@ -10,9 +10,10 @@ public class Comment {
 	
 	private int topicId;
 
-	public Comment(String content, int userId) {
+	public Comment(String content, int userId, int topicId) {
 		this.content = content;
 		this.userId = userId;
+		this.topicId = topicId;
 	}
 
 	public Comment(int id, String content, int userId, int topicId) {

@@ -72,4 +72,12 @@ $(document).ready(function () {
     $(document).on('click', '#registerButton', function () {
         change('#register', '#login');
     });
+    $(document).on('click', '#topic', function () {
+        
+        $("#"+$(this).attr('data-comments')).slideDown();
+    });
+    $(document).on('click', '#slideUpButton', function () {
+        
+        $("#"+$(this).attr('data-comments')).slideUp();
+    });
 });
