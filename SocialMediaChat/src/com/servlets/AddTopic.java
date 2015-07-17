@@ -58,31 +58,35 @@ public class AddTopic extends HttpServlet {
 		 * System.out.println(request.getParameter("file"));
 		 * dbActions.addItem(topic);
 		 */
-
+		Topic topic;
 		response.setContentType("multipart/form-data");
-
+		
 		Part filePart = request.getPart("file");
+		if (filePart.getSize() != 0) {
+			InputStream fileContent = filePart.getInputStream();
+			System.out.println(filePart.getSubmittedFileName());
 
-		InputStream fileContent = filePart.getInputStream();
-		System.out.println(filePart.getSubmittedFileName());
-
-		System.out.println(getServletContext().getRealPath("/"));
-		FileOutputStream out = new FileOutputStream(getServletContext()
-				.getRealPath("/")+"/files"
-				+ java.io.File.separator
-				+ filePart.getSubmittedFileName());
-		int read;
-		byte[] bytes = new byte[1024];
-		while ((read = fileContent.read(bytes)) != -1) {
-			out.write(bytes, 0, read);
+			System.out.println(getServletContext().getRealPath("/"));
+			FileOutputStream out = new FileOutputStream(getServletContext()
+					.getRealPath("/")
+					+ "/files"
+					+ java.io.File.separator
+					+ filePart.getSubmittedFileName());
+			int read;
+			byte[] bytes = new byte[1024];
+			while ((read = fileContent.read(bytes)) != -1) {
+				out.write(bytes, 0, read);
+			}
+			fileContent.close();
+			out.close();
+		
+		topic = new Topic(request.getParameter("title"),
+				request.getParameter("content"), -1, "files/"
+						+ filePart.getSubmittedFileName());
 		}
-		fileContent.close();
-		out.close();
-		Topic topic = new Topic(request.getParameter("title"),
-				request.getParameter("content"), -1,
-				"files/"
-				+ filePart.getSubmittedFileName());
-
+		else 
+		topic = new Topic(request.getParameter("title"),
+				request.getParameter("content"), -1, "");
 		dbActions.addItem(topic);
 
 		response.sendRedirect("main.jsp");

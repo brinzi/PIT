@@ -9,8 +9,6 @@ $(window).load(
 				success : function( result ) {
 					$("#topicContainer").empty();
 					topics = eval(result);
-					
-					
 					//topics = $.parseJSON( result ); 
 					for ( var topic in topics) {
 						var media="";
@@ -27,7 +25,7 @@ $(window).load(
 										+ topics[topic].title + '</h1></p>'
 										+ media
 										+"</img><p>"
-										+ topics[topic].content
+										+ topics[topic].content+""
 										+'</p>'
 										+'</div>'
 										+'<div id='+topics[topic].id+'comments'+' style="display:none;">'
@@ -35,7 +33,7 @@ $(window).load(
 										+'<form class="form-horizontal" id="commentForm" method="POST" action=AddComment>'
 										+'<input type="hidden" name="topic-id" value='+topics[topic].id+'></input>'
 										+'<input type="hidden" name="user-id" value='+getCookie("userId")+'></input>'
-										+'<textarea id='+topics[topic].id+' class="form-control" name="content" rows="1"></textarea>'
+										+'<textarea id='+topics[topic].id+' class="form-control" name="content" rows="1" style="resize:none; width:80%;"></textarea>'
 										+'<button type="submit" class="btn btn-primary">Submit</button></form>'
 										+'</div>'
 										+'</div>')
