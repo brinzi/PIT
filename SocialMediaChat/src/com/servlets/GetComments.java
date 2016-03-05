@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.dbstuff.CommentSqlImplement;
 import com.google.gson.Gson;
-import com.topicdata.Comment;
+import com.imagedata.Comment;
 
 /**
  * Servlet implementation class GetComments

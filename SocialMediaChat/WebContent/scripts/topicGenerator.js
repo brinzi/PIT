@@ -14,30 +14,18 @@ $(window).load(
 						var media="";
 						
 						if( topics[topic].fileName.search(".gif")!=-1 || topics[topic].fileName.search(".jpg")!=-1 || topics[topic].fileName.search(".png")!=-1 )
-							media = "<img src="+'"'+topics[topic].fileName+'" id="topicImage" >';
+							media = "<img src="+'"'+topics[topic].fileName+'" id="topicImage" ></img>';
 						else if(topics[topic].fileName.search(".webm")!=-1 || topics[topic].fileName.search(".mp4")!=-1 || topics[topic].fileName.search(".ogg")!=-1)
 							media= "<video src="+'"'+topics[topic].fileName+'" id="topicImage" type="video" controls>';
-						console.log(topics[topic].fileName);
+						console.log(media);
 						$("#topicContainer").append(
-								'<div id='+ topics[topic].id+' >'
+								'<div id=\ >'
 										+'<div id ="topic"'
-										+ ' class = "well topic" data-comments="'+ topics[topic].id +'comments"> <p><h1>'
-										+ topics[topic].title + '</h1></p>'
+										+ ' class = "well topic" >'
 										+ media
-										+"</img><p>"
-										+ topics[topic].content+""
-										+'</p>'
-										+'</div>'
-										+'<div id='+topics[topic].id+'comments'+' style="display:none;">'
-										+'<button type="normal" id="slideUpButton" data-comments="'+ topics[topic].id +'comments"></button><br/>'
-										+'<form class="form-horizontal" id="commentForm" method="POST" action=AddComment>'
-										+'<input type="hidden" name="topic-id" value='+topics[topic].id+'></input>'
-										+'<input type="hidden" name="user-id" value='+getCookie("userId")+'></input>'
-										+'<textarea id='+topics[topic].id+' class="form-control" name="content" rows="1" style="resize:none; width:80%;"></textarea>'
-										+'<button type="submit" class="btn btn-primary">Submit</button></form>'
 										+'</div>'
 										+'</div>')
-					}
+					};
 					change("#topicContainer",cur);
 				},
 				error: function( xhr, status, error){
@@ -47,7 +35,7 @@ $(window).load(
 				}
 				
 			})
-			
+			/*
 			$.ajax({
 				type : "POST",
 				dataType: "json",
@@ -70,5 +58,5 @@ $(window).load(
 				}
 				
 			})
-
+*/
 		});

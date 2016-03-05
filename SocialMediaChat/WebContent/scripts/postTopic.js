@@ -1,9 +1,9 @@
 $(document).on("click", "#PostTopic", function() {
-	$("#postTopicForm").slideDown();
+	$("#postTopicForm").fadeIn();
 });
 
 $(document).on("click", "#cancelPost", function() {
-	$("#postTopicForm").slideUp();
+	$("#postTopicForm").fadeOut();
 });
 
 

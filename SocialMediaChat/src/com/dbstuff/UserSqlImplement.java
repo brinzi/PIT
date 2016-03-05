@@ -16,7 +16,7 @@ import com.userdata.User;
 
 public class UserSqlImplement {
 
-	private String url = "jdbc:mysql://ems.informatik.uni-oldenburg.de:55000/it15g11";
+	private String url = "jdbc:mysql://localhost:3306/studenti";
 	private Connection conn;
 
 	public void addItem(User o) {
@@ -24,22 +24,22 @@ public class UserSqlImplement {
 		try {
 			conn = getConnection();
 			PreparedStatement ps = conn
-					.prepareStatement("INSERT INTO users(id, name, email, friendLists,notifications) VALUES (?,?,?,?,?)");
+					.prepareStatement("INSERT INTO users(id, name, email, notifications) VALUES (?,?,?,?)");
 			ps.setInt(1, u.getId());
 			ps.setString(2, u.getName());
 			ps.setString(3, u.getEmail());
-			ps.setObject(4, u.getFriendList());
-			ps.setObject(5, u.getMyNotifications());
+			ps.setObject(4, u.getMyNotifications());
 
 			ps.execute();
 
 
-
+			conn.close();
 			System.out.println("executed");
 
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	/* Loads the friends list to the DB */
@@ -51,7 +51,7 @@ public class UserSqlImplement {
 			ps.setObject(1, list);
 			ps.setInt(2, userID);
 			ps.execute();
-
+			conn.close();
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 		}
@@ -97,7 +97,7 @@ public class UserSqlImplement {
 			ps.setObject(1, list);
 			ps.setInt(2, userID);
 			ps.execute();
-
+			conn.close();
 		} catch (SQLException | IOException e) {
 			e.printStackTrace();
 		}
@@ -217,7 +217,7 @@ public class UserSqlImplement {
 	public Connection getConnection() throws SQLException,
 			FileNotFoundException, IOException {
 
-		return DriverManager.getConnection(url, "it15g11", "7nigyw2");
+		return DriverManager.getConnection(url, "root", "1234");
 	}
 
 }

@@ -1,10 +1,8 @@
 package com.userdata;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class User {
 
@@ -12,7 +10,6 @@ public class User {
 
 	private String email, password, name;
 	private int id;
-	private Map<Integer , String > friendList;
 	private List<Notification> myNotifications;
 	
 	
@@ -36,7 +33,6 @@ public class User {
 		this.email = email;
 		this.name = name;
 		this.id = id;
-		this.friendList=new HashMap<Integer, String>();
 		this.myNotifications=new ArrayList<Notification>();
 	}
 	
@@ -52,7 +48,6 @@ public class User {
 		this.email = email;
 		this.password = password;
 		this.name = name;
-		this.friendList=new HashMap<Integer, String>();
 		this.myNotifications=new ArrayList<Notification>();
 	}
 
@@ -61,7 +56,6 @@ public class User {
 	public User(String email, String password) {
 		this.email=email;
 		this.password=password;
-		this.friendList=new HashMap<Integer, String>();
 		this.myNotifications=new ArrayList<Notification>();
 	}
 	
@@ -83,14 +77,12 @@ public class User {
 	 * @param friendList
 	 * @param myNotifications
 	 */
-	public User(String email, String password, String name, int id,
-			Map<Integer, String> friendList, List<Notification> myNotifications) {
+	public User(String email, String password, String name, int id, List<Notification> myNotifications) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.name = name;
 		this.id = id;
-		this.friendList = friendList;
 		this.myNotifications = myNotifications;
 	}
 
@@ -131,24 +123,6 @@ public class User {
 	}
 	
 	
-	public Map<Integer, String> getFriendList() {
-		return friendList;
-	}
-
-
-
-	public void setFriendList(HashMap<Integer, String> friendList) {
-		this.friendList = friendList;
-	}
-
-	
-	
-	public void addFriend(User x){
-		
-		friendList.put(x.getId(), x.getName());
-		
-	}
-	 
 	
 	public void addNotification(Notification n){
 		myNotifications.add(n);

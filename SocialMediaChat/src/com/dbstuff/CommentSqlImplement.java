@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import com.topicdata.Comment;
+import com.imagedata.Comment;
 
 
 public class CommentSqlImplement {

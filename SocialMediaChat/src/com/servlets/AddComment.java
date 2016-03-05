@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dbstuff.CommentSqlImplement;
-import com.topicdata.Comment;
+import com.imagedata.Comment;
 
 /**
  * Servlet implementation class AddComment

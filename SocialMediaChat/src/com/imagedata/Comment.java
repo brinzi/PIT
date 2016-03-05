@@ -1,4 +1,4 @@
-package com.topicdata;
+package com.imagedata;
 
 public class Comment {
 

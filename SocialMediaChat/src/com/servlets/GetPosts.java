@@ -8,11 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONValue;
-
 import com.dbstuff.TopicSqlImplement;
 import com.google.gson.Gson;
-import com.topicdata.Topic;
+import com.imagedata.UserImage;
 
 /**
  * Servlet implementation class GetPosts
@@ -46,11 +44,8 @@ public class GetPosts extends HttpServlet {
 		
 		response.setContentType("text/html");
 
-		ArrayList<Topic> topics= dbActions.getAll();
-//		for ( Topic i : topics)
-//			System.out.println(i.getTitle());
-		System.out.println(getServletContext().getRealPath("/"));
-		String gson = new Gson().toJson(topics);
+		ArrayList<UserImage> images= dbActions.getAll();
+		String gson = new Gson().toJson(images);
 	
 		
 		response.setContentType("application/json");

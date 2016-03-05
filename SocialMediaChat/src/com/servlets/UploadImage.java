@@ -1,12 +1,16 @@
 package com.servlets;
 
+import java.awt.image.BufferedImage;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
+import javafx.geometry.Point2D;
+
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import com.dbstuff.TopicSqlImplement;
-import com.topicdata.Topic;
+import com.imagedata.UserImage;
+import com.imageprocess.Analyzer;
 
 /**
  * Servlet implementation class AddTopic
  */
 @MultipartConfig
-public class AddTopic extends HttpServlet {
+public class UploadImage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	TopicSqlImplement dbActions;
@@ -29,7 +34,7 @@ public class AddTopic extends HttpServlet {
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public AddTopic() {
+	public UploadImage() {
 		super();
 		dbActions = new TopicSqlImplement();
 		// TODO Auto-generated constructor stub
@@ -58,36 +63,39 @@ public class AddTopic extends HttpServlet {
 		 * System.out.println(request.getParameter("file"));
 		 * dbActions.addItem(topic);
 		 */
-		Topic topic;
+		UserImage image;
 		response.setContentType("multipart/form-data");
-		
+
 		Part filePart = request.getPart("file");
+		System.out.println(filePart.getSubmittedFileName());
 		if (filePart.getSize() != 0) {
 			InputStream fileContent = filePart.getInputStream();
-			System.out.println(filePart.getSubmittedFileName());
-
+			BufferedImage subjectImage = ImageIO.read(fileContent);
+		
+			
 			System.out.println(getServletContext().getRealPath("/"));
-			FileOutputStream out = new FileOutputStream(getServletContext()
+			FileOutputStream output = new FileOutputStream(getServletContext()
 					.getRealPath("/")
-					+ "/files"
+					+ "/files/"
 					+ java.io.File.separator
 					+ filePart.getSubmittedFileName());
-			int read;
-			byte[] bytes = new byte[1024];
-			while ((read = fileContent.read(bytes)) != -1) {
-				out.write(bytes, 0, read);
-			}
-			fileContent.close();
-			out.close();
-		
-		topic = new Topic(request.getParameter("title"),
-				request.getParameter("content"), -1, "files/"
-						+ filePart.getSubmittedFileName());
+			
+			ImageIO.write(subjectImage, "jpg", output);
+
+			ArrayList<Point2D> m = new ArrayList<>();
+			m.addAll(Arrays.asList(new Point2D(88, 144), new Point2D(412, 179),
+					new Point2D(152, 285), new Point2D(322, 244), new Point2D(
+							122, 483), new Point2D(355, 458), new Point2D(260,
+							86), new Point2D(245, 164), new Point2D(239, 440)));
+
+			image = new UserImage(-1, "files/"
+					+ filePart.getSubmittedFileName(), m);
+			Analyzer.analyze(subjectImage,m);
+			
+		} else {
+			image = new UserImage(-1, "");
 		}
-		else 
-		topic = new Topic(request.getParameter("title"),
-				request.getParameter("content"), -1, "");
-		dbActions.addItem(topic);
+		dbActions.addItem(image);
 
 		response.sendRedirect("main.jsp");
 

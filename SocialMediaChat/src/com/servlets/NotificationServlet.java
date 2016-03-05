@@ -79,8 +79,6 @@ public class NotificationServlet extends HttpServlet {
 		User userA = userDbActions.findUser(users[0]);
 		User userB = userDbActions.findUser(users[1]);
 
-		updateFriendLists(userA, userB);
-		updateFriendLists(userB, userA);
 
 		updateNotificationLists(userA, users[2]);
 		updateNotificationLists(userB, users[2]);
@@ -103,15 +101,7 @@ public class NotificationServlet extends HttpServlet {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	private void updateFriendLists(User u1, User u2) {
-		u1.setFriendList((HashMap<Integer, String>) userDbActions
-				.getFriendList(u1.getId()));
-		u1.addFriend(u2);
-		userDbActions.loadFriendList(u1.getFriendList(), u1.getId());
-
-	}
-
+	
 	@SuppressWarnings("unchecked")
 	private String handleFriendRequest(String[] users) {
 
