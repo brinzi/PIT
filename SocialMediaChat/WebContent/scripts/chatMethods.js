@@ -131,8 +131,6 @@ function() {
 	for ( var friend in myFriends) {
 		console.log("hello");
 		loadFriend(myFriends[friend], friend);
-		
-
 	}
 	;
 	$("#send").click(function(e) {

@@ -46,7 +46,9 @@ public class Register extends HttpServlet {
 		response.setContentType("text/html");
 		User user = new User(request.getParameter("email"),
 				request.getParameter("password"),
-				request.getParameter("username"));
+				request.getParameter("username"),
+				"M",
+				"09-05-1994");
 		user.setId(user.hashCode());
 
 		dbActions.addItem(user);

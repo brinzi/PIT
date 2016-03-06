@@ -62,6 +62,7 @@ public class LogIn extends HttpServlet {
 			// Gson().toJson(user.getMyNotifications());
 
 			request.getSession().setAttribute("currentUser", user);
+			
 			// request.getSession().setAttribute("notificationList",
 			// notifications);
 			Cookie userid = new Cookie("userId", "" + user.getId());
@@ -74,11 +75,12 @@ public class LogIn extends HttpServlet {
 		}
 
 	}
-
+/*
 	@SuppressWarnings("unchecked")
 	private void loadUserLists(User user) {
 		user.setMyNotifications((ArrayList<Notification>) dbActions
 				.getNotifications(user.getId()));
 
 	}
+	*/
 }

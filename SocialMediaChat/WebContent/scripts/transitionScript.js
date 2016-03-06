@@ -45,30 +45,6 @@ $(document).ready(function () {
     $('#changeNew').click(function () {
         cur = change('#new', cur);
     });
-    $(document).on('click', '#chat>ul>li>a', function () {
-        console.log($(this).attr('href').split('#') [1]);
-        activeChatWindow = $(this).attr('href').split('#') [1];
-    });
-    $(document).on('click', '#friendTab', function () {
-        $('#chat').slideDown();
-        console.log($(this).data('userid'));
-        activeChatWindow = $(this).text();
-        if (openChatWindows.length == 0) {
-            
-            appendChatWindow(true, activeChatWindow, $(this).data('userid'));
-            appendChatWindowTab(true, activeChatWindow);
-           
-        } else if (!windowIsOpened($(this).data('userid'))) {
-        
-            appendChatWindowTab(false, activeChatWindow);
-            appendChatWindow(false, activeChatWindow, $(this).data('userid'));
-            $('#' + $(this).text() + 'Tab').trigger('click');
-          
-        } else {
-            console.log('#' + $(this).text());
-            $('#' + activeChatWindow + 'Tab').trigger('click');
-        }
-    });
     $(document).on('click', '#registerButton', function () {
         change('#register', '#login');
     });
@@ -80,4 +56,14 @@ $(document).ready(function () {
         
         $("#"+$(this).attr('data-comments')).slideUp();
     });
+    
+    $(document).on("click", "#PostTopic", function() {
+    	$("#postTopicForm").fadeIn();
+    });
+
+    $(document).on("click", "#cancelPost", function() {
+    	$("#postTopicForm").fadeOut();
+    });
+
+
 });
